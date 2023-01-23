@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Validator {
+final class Validator {
 
     static func isValidEmail(for email: String) -> Bool {
         let email = email.trimmingCharacters(in: .whitespacesAndNewlines)

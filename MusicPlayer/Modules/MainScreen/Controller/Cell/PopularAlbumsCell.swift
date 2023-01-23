@@ -7,9 +7,12 @@
 
 import UIKit
 
-class PopularAlbumsCell: UICollectionViewCell {
+final class PopularAlbumsCell: UICollectionViewCell {
+    
+    // MARK: - UI Elements
 
     private lazy var imageView: UIImageView = {
+        
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .blue
@@ -19,6 +22,7 @@ class PopularAlbumsCell: UICollectionViewCell {
     }()
 
     private let artistLabel: UILabel = {
+        
         let label = UILabel()
         label.text = "Album name"
         label.font = .interBold(size: 14)
@@ -30,12 +34,15 @@ class PopularAlbumsCell: UICollectionViewCell {
     }()
 
     private let alphaView: UIView = {
+        
         let view = UIView()
         view.backgroundColor = UIColor(named: "mainColor")
         view.alpha = 0.3
         return view
     }()
 
+    // MARK: - Lifecycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -46,11 +53,15 @@ class PopularAlbumsCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Public Methods
+    
     func setup(album: ArtistModel) {
         imageView.image = album.image
         artistLabel.text = album.name
     }
 
+    // MARK: - Setup Constrains
+    
     private func configure() {
         addSubviews([imageView, alphaView, artistLabel])
 
@@ -71,6 +82,8 @@ class PopularAlbumsCell: UICollectionViewCell {
         ])
     }
 }
+
+// MARK: - Constant Constrains
 
 private extension CGFloat {
     static let leadingMargin: CGFloat = 10

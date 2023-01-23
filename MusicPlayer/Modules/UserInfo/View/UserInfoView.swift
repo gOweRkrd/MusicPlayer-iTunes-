@@ -8,18 +8,22 @@
 import UIKit
 
 final class UserInfoView: BaseView {
-
+    
+    // MARK: - UI Elements
+    
     let titleLabel = TitleLabel(title: "Welcome")
-
     let logOutButton = DefaultButton(titleText: "LogOut")
 
     let userInfoTableView: UITableView = {
+        
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    
+    // MARK: - Lifecycle
 
     override func addSubviews() {
         super.addSubviews()
@@ -27,6 +31,8 @@ final class UserInfoView: BaseView {
         addSubview(titleLabel)
         addSubview(logOutButton)
     }
+    
+    // MARK: - Setup Constrains
 
     override func makeConstraints() {
         super.makeConstraints()

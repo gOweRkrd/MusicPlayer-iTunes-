@@ -7,16 +7,22 @@
 
 import UIKit
 
-private extension CGFloat {
-    static let height: CGFloat = 50
-    static let logoHeight: CGFloat = 74
-}
-
 final class RegistrationView: BaseView {
+    
+    // MARK: - UI Elements
 
     let singInButton = DefaultButton(titleText: "Sing in")
+    let nameTextField = DefaultTextField(placeholder: "Name", isSecureTextEntry: false)
+    let emailTextField = DefaultTextField(placeholder: "Email", isSecureTextEntry: false)
+    let passwordTextField = DefaultTextField(placeholder: "Password", isSecureTextEntry: true)
+    
+    private let title = TitleLabel(title: "Create your account")
+    private let nameLabel = DescriptionLabel(title: "Name")
+    private let emailLabel = DescriptionLabel(title: "Email address")
+    private let passwordLabel = DescriptionLabel(title: "Password")
 
     let signInLabel: UILabel = {
+        
         let label = UILabel()
         label.text = "Already have an account? Sign in"
         label.textColor = .white
@@ -38,6 +44,7 @@ final class RegistrationView: BaseView {
     }()
 
     private lazy var contentStackView: UIStackView = {
+        
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,6 +53,7 @@ final class RegistrationView: BaseView {
     }()
 
     private let logoImage: UIImageView = {
+        
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
         imageView.contentMode = .scaleAspectFit
@@ -53,6 +61,7 @@ final class RegistrationView: BaseView {
     }()
 
     private let name: UILabel = {
+        
         let label = UILabel()
         label.text = "Welcome to Music Player"
         label.textAlignment = .center
@@ -61,20 +70,8 @@ final class RegistrationView: BaseView {
         return label
     }()
 
-    private let title = TitleLabel(title: "Create your account")
-
-    private let nameLabel = DescriptionLabel(title: "Name")
-
-    let nameTextField = DefaultTextField(placeholder: "Name", isSecureTextEntry: false)
-
-    private let emailLabel = DescriptionLabel(title: "Email address")
-
-    let emailTextField = DefaultTextField(placeholder: "Email", isSecureTextEntry: false)
-
-    private let passwordLabel = DescriptionLabel(title: "Password")
-
-    let passwordTextField = DefaultTextField(placeholder: "Password", isSecureTextEntry: true)
-
+    // MARK: - Setup Constrains
+   
     override func addSubviews() {
         super.addSubviews()
         addSubview(contentStackView)
@@ -121,3 +118,11 @@ final class RegistrationView: BaseView {
         contentStackView.setCustomSpacing(CGFloat.baseSpacing, after: nameLabel)
     }
 }
+
+// MARK: - Constant Constrains
+
+private extension CGFloat {
+    static let height: CGFloat = 50
+    static let logoHeight: CGFloat = 74
+}
+

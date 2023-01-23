@@ -8,10 +8,13 @@
 import UIKit
 
 final class UserInfoViewController: UIViewController {
+    
+    // MARK: - Properties
 
     private var categories = UserInfoModel.categories
-
     private let customView = UserInfoView()
+    
+    // MARK: - Lifecycle
 
     override func loadView() {
         super.loadView()
@@ -25,8 +28,27 @@ final class UserInfoViewController: UIViewController {
         customView.logOutButton.addTarget(self, action: #selector(didTapLogout), for: .touchUpInside)
 
     }
-
-    @objc private func didTapLogout() {
+    
+    // MARK: - Private Methods
+    
+    private func fetchInfoUser() {
+        AuthService.shared.fetchUser { user, error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            if let user = user {
+                self.customView.titleLabel.text = "Welcome, \(user.username)"
+            }
+        }
+    }
+    
+    private func setupDelegate() {
+        customView.userInfoTableView.dataSource = self
+        customView.userInfoTableView.delegate = self
+    }
+    
+    @objc
+    private func didTapLogout() {
         AuthService.shared.signOut { [weak self] error in
             guard let self = self else { return }
             if let error = error {
@@ -39,23 +61,9 @@ final class UserInfoViewController: UIViewController {
             }
         }
     }
-
-    private func fetchInfoUser() {
-        AuthService.shared.fetchUser { user, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            if let user = user {
-                self.customView.titleLabel.text = "Welcome, \(user.username)"
-            }
-        }
-    }
-
-    private func setupDelegate() {
-        customView.userInfoTableView.dataSource = self
-        customView.userInfoTableView.delegate = self
-    }
 }
+
+// MARK: - UITableViewDataSource
 
 extension UserInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,6 +80,8 @@ extension UserInfoViewController: UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension UserInfoViewController: UITableViewDelegate {
 }

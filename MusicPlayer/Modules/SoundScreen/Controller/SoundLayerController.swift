@@ -55,6 +55,8 @@ final class SoundLayerController: UIViewController {
 
         getMusicData()
     }
+    
+    // MARK: - Private Methods
 
     private func setupTitle(backgroundColor: UIColor) {
         let appearance = UINavigationBarAppearance()
@@ -98,45 +100,7 @@ final class SoundLayerController: UIViewController {
             soundView.favouritesButton.setImage(UIImage(named: "heart2"), for: .normal)
         }
     }
-
-    @objc private func playBut () {
-        if musicManager.isPlayed {
-            soundView.playButton.setImage(UIImage(named: "play"), for: .normal)
-            musicManager.pauseTrack()
-        } else {
-            soundView.playButton.setImage(UIImage(named: "pause"), for: .normal)
-            musicManager.playTrack()
-        }
-    }
-
-    @objc private func sliderBut () {
-        musicManager.changeTrackTime(value: Double(soundView.musicSlider.value))
-    }
-
-    @objc private func favouritesTapButton () {
-        guard let data else {
-            return
-        }
-
-        if isFavorite {
-            storageManager.delete(data)
-        } else {
-            storageManager.saveTrack(data)
-        }
-        isFavorite.toggle()
-        changeFavorite(isFavorite: isFavorite)
-    }
-
-    @objc private func leftBut () {
-        musicManager.previousTrack()
-        getMusicData()
-    }
-
-    @objc private func rightBut () {
-        musicManager.nextTrack()
-        getMusicData()
-    }
-
+    
     private func getMusicData() {
         if let model = musicManager.getModel() {
             data = model
@@ -151,5 +115,48 @@ final class SoundLayerController: UIViewController {
             }
             setupPlayer()
         }
+    }
+
+    @objc
+    private func playBut () {
+        if musicManager.isPlayed {
+            soundView.playButton.setImage(UIImage(named: "play"), for: .normal)
+            musicManager.pauseTrack()
+        } else {
+            soundView.playButton.setImage(UIImage(named: "pause"), for: .normal)
+            musicManager.playTrack()
+        }
+    }
+
+    @objc
+    private func sliderBut () {
+        musicManager.changeTrackTime(value: Double(soundView.musicSlider.value))
+    }
+
+    @objc
+    private func favouritesTapButton () {
+        guard let data else {
+            return
+        }
+
+        if isFavorite {
+            storageManager.delete(data)
+        } else {
+            storageManager.saveTrack(data)
+        }
+        isFavorite.toggle()
+        changeFavorite(isFavorite: isFavorite)
+    }
+
+    @objc
+    private func leftBut () {
+        musicManager.previousTrack()
+        getMusicData()
+    }
+
+    @objc
+    private func rightBut () {
+        musicManager.nextTrack()
+        getMusicData()
     }
 }

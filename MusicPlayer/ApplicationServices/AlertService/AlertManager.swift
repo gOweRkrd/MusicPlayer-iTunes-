@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlertManager {
+final class AlertManager {
 
 private static func showBasicAlert(on vc: UIViewController, title: String, message: String?) {
         DispatchQueue.main.async {
@@ -71,6 +71,7 @@ extension AlertManager {
 }
 
 // MARK: - Fetching User Errors
+
 extension AlertManager {
 
     public static func showFetchingUserError(on vc: UIViewController, with error: Error) {

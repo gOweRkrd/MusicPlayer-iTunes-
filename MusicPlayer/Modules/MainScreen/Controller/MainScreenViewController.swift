@@ -9,15 +9,21 @@ import UIKit
 import AVKit
 
 class MainScreenViewController: UIViewController {
+    
+    // MARK: - Properties
 
     private var artists = ArtistModel.createArtists()
     private var countryTracks = [TrackModel]()
-
+    private let musicManager = MusicManager.shared
     private let selectorCountriesView = SelectorCountriesView()
+    
+    // MARK: - UI Elements
+    
     private let cellReuseIdentifier = "cell"
     private let identifierCollectionView = "cell"
 
     private let greetingLabel: UILabel = {
+        
         let label = UILabel()
         label.text = "Hello!"
         label.textAlignment = .left
@@ -26,6 +32,7 @@ class MainScreenViewController: UIViewController {
         return label
     }()
     private let questionLabel: UILabel = {
+        
         let label = UILabel()
         label.text = "What You want to hear today?"
         label.textAlignment = .left
@@ -35,6 +42,7 @@ class MainScreenViewController: UIViewController {
     }()
 
     private let popularAlbumsLabel: UILabel = {
+        
         let label = UILabel()
         label.text = "Popular Artists"
         label.textAlignment = .left
@@ -44,6 +52,7 @@ class MainScreenViewController: UIViewController {
     }()
 
     private lazy var popularAlbumsCollectionView: UICollectionView = {
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 150, height: 150)
@@ -57,6 +66,7 @@ class MainScreenViewController: UIViewController {
     }()
 
     private lazy var tableView: UITableView = {
+        
         let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.dataSource = self
@@ -66,6 +76,7 @@ class MainScreenViewController: UIViewController {
     }()
 
     private let topCountryLabel: UILabel = {
+        
         let label = UILabel()
         label.text = "Top chart in countries"
         label.textAlignment = .left
@@ -73,9 +84,9 @@ class MainScreenViewController: UIViewController {
         label.font = .interBold(size: 18)
         return label
     }()
-
-    private let musicManager = MusicManager.shared
-
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -84,7 +95,37 @@ class MainScreenViewController: UIViewController {
         selectorCountriesView.delegate = self
         fetchInfoUser()
     }
+    
+    // MARK: - Private Methods
+    
+    private func fetchInfoUser() {
+        AuthService.shared.fetchUser { user, error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            if let user = user {
+                self.greetingLabel.text = "Hello, \(user.username)"
+            }
+        }
+    }
+    
+    private func fetchAlbum(from country: Country) {
+        NetworkManager.shared.getAllMusic(from: country) { [self] result in
+            switch result {
+            case .success(let album):
+                DispatchQueue.main.async {
+                    self.countryTracks = album.results.filter { $0.trackName != nil && $0.previewUrl != nil }
+                    self.tableView.reloadData()
 
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    // MARK: - Setup Constrains
+    
     private func setupViews() {
         view.backgroundColor = UIColor(named: "mainColor")
         view.addSubviews([greetingLabel,
@@ -128,32 +169,19 @@ class MainScreenViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+}
 
-    private func fetchInfoUser() {
-        AuthService.shared.fetchUser { user, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            if let user = user {
-                self.greetingLabel.text = "Hello, \(user.username)"
-            }
-        }
-    }
+// MARK: - Constant Constrains
 
-    private func fetchAlbum(from country: Country) {
-        NetworkManager.shared.getAllMusic(from: country) { [self] result in
-            switch result {
-            case .success(let album):
-                DispatchQueue.main.async {
-                    self.countryTracks = album.results.filter { $0.trackName != nil && $0.previewUrl != nil }
-                    self.tableView.reloadData()
-
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
+private extension CGFloat {
+    static let leadingMargin: CGFloat = 10
+    static let trailingMargin: CGFloat = -10
+    static let greetingLabelTopMargin: CGFloat = 50
+    static let questionLabelTopMargin: CGFloat = 5
+    static let topCountryLabelTopMargin: CGFloat = 30
+    static let popularTopMargin: CGFloat = 10
+    static let popularAlbumsCollectionHeight: CGFloat = 150
+    static let selectorCountriesHeight: CGFloat = 50
 }
 
 // MARK: - UICollectionViewDataSource
@@ -228,21 +256,11 @@ extension MainScreenViewController: TopCountryCellDelegate {
     }
 }
 
-extension MainScreenViewController: SelectorCountriesViewDelegate {
+// MARK: - SelectorCountriesViewDelegate
 
-    // MARK: - SelectorCountriesViewDelegate
+extension MainScreenViewController: SelectorCountriesViewDelegate {
 
     func didTapCountryButton(_ country: Country) {
         fetchAlbum(from: country)
     }
-}
-private extension CGFloat {
-    static let leadingMargin: CGFloat = 10
-    static let trailingMargin: CGFloat = -10
-    static let greetingLabelTopMargin: CGFloat = 50
-    static let questionLabelTopMargin: CGFloat = 5
-    static let topCountryLabelTopMargin: CGFloat = 30
-    static let popularTopMargin: CGFloat = 10
-    static let popularAlbumsCollectionHeight: CGFloat = 150
-    static let selectorCountriesHeight: CGFloat = 50
 }

@@ -11,9 +11,13 @@ import FirebaseFirestore
 
 class AuthService {
 
+    // MARK: - Properties
+    
     public static let shared = AuthService()
 
     private init() {}
+    
+    // MARK: - Public Methods
 
     public func registerUser(with userRequest: RegisterUserRequest, completion: @escaping (Bool, Error?) -> Void) {
         let username = userRequest.username

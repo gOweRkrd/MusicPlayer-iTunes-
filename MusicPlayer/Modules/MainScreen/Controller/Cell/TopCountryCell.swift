@@ -11,10 +11,16 @@ protocol TopCountryCellDelegate: AnyObject {
     func didTapPlayButton(with index: Int?)
 }
 
-class TopCountryCell: UITableViewCell {
+final class TopCountryCell: UITableViewCell {
+    
+    // MARK: - Properties
 
     weak var delegate: TopCountryCellDelegate?
     var index: Int?
+    
+    // MARK: - UI Elements
+    
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
 
     private let imageTrack: UIImageView = {
         let image = UIImageView()
@@ -61,8 +67,8 @@ class TopCountryCell: UITableViewCell {
         return button
     }()
 
-    private let activityIndicator = UIActivityIndicatorView(style: .large)
-
+    // MARK: - Lifecycle
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -82,6 +88,9 @@ class TopCountryCell: UITableViewCell {
         imageTrack.image = nil
     }
 
+    
+    // MARK: - PublicMethods
+    
     func setup(config: TopCountryCellConfig) {
         nameArtistLabel.text = config.nameArtist
         nameTrackLabel.text = config.nameTrack
@@ -102,10 +111,15 @@ class TopCountryCell: UITableViewCell {
         }
     }
 
-    @objc private func playButMain () {
+    // MARK: - Private Methods
+    
+    @objc
+    private func playButMain () {
         delegate?.didTapPlayButton(with: index)
     }
 
+    // MARK: - Setup Constrains
+    
     private func configure() {
         backgroundColor = .clear
         contentView.addSubviews([imageTrack,
@@ -140,6 +154,8 @@ class TopCountryCell: UITableViewCell {
         ])
     }
 }
+
+// MARK: - Constant Constrains
 
 private extension CGFloat {
     static let leadingMargin: CGFloat = 10

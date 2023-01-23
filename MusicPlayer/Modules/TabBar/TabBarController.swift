@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+final class TabBarController: UITabBarController {
 
     // MARK: - Lifecycle
 
@@ -17,7 +17,7 @@ class TabBarController: UITabBarController {
         setupTabBar()
     }
 
-    // MARK: - Private Method
+    // MARK: - Private Methods
 
     private func generateTabBar() {
         viewControllers = [

@@ -7,14 +7,22 @@
 
 import UIKit
 class OnboardingViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private var isNextButtonTapped = false
+    
+    // MARK: - UI Elements
 
     private let imageView: UIImageView = {
+        
         let imageView = UIImageView()
         imageView.image = UIImage(named: "OnboardingFirst")
         return imageView
     }()
 
     private let welcomeLabel: UILabel = {
+        
         let label = UILabel()
         label.text = "Welcome to the world of music"
         label.font = .poppinsBold(size: 24)
@@ -25,6 +33,7 @@ class OnboardingViewController: UIViewController {
     }()
 
     private let descriptionLabel: UILabel = {
+        
         let label = UILabel()
         label.text = "We are a small boutique music venue in the heart of internet"
         label.font = .poppinsRegular(size: 13)
@@ -44,8 +53,8 @@ class OnboardingViewController: UIViewController {
         return button
     }()
 
-    private var isNextButtonTapped = false
-
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,11 +65,56 @@ class OnboardingViewController: UIViewController {
         saveUserDefaults()
     }
 
+    // MARK: - Private Methods
+    
     private func saveUserDefaults() {
         let userDefaults = UserDefaults.standard
         userDefaults.set(true, forKey: "OnBoardingWasViewed")
     }
+    
+    private func setupNavigationItem() {
+        let rightItem = UIBarButtonItem(title: "Skip",
+                                        image: nil,
+                                        target: self,
+                                        action: #selector(skipOnboarding))
+        rightItem.tintColor = .white
+        navigationItem.rightBarButtonItem = rightItem
+    }
+    
+    private func createGradientToNextButton() -> CAGradientLayer {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        let firstColor = UIColor(named: "OnboardingNextButtonColor1") ?? .red
+        let secondColor = UIColor(named: "OnboardingNextButtonColor2") ?? .red
+        gradient.colors = [firstColor.cgColor, secondColor.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: 66, height: 40)
 
+        return gradient
+    }
+    
+    @objc
+    private func skipOnboarding() {
+        dismiss(animated: true)
+    }
+
+    @objc
+    private func goNextStep(_ sender: UIButton) {
+        if isNextButtonTapped {
+            skipOnboarding()
+        } else {
+            imageView.image = UIImage(named: "OnboardingSecond")
+            nextButton.setTitle("Start", for: .normal)
+            welcomeLabel.text = "Download and save your Favourit Music"
+            descriptionLabel.text = "Your best music is always with you 🎧"
+            navigationItem.rightBarButtonItem?.isHidden = true
+            isNextButtonTapped = true
+        }
+    }
+
+    // MARK: - Setup Constrains
+    
     private func setupView() {
         view.addSubviews([imageView, welcomeLabel, descriptionLabel, nextButton])
 
@@ -82,49 +136,8 @@ class OnboardingViewController: UIViewController {
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: .nextButtonTrailingAnchor),
             nextButton.widthAnchor.constraint(equalToConstant: .nextButtonWidthAnchor),
             nextButton.heightAnchor.constraint(equalToConstant: .nextButtonHeightAnchor)
-
         ])
     }
-
-    private func setupNavigationItem() {
-        let rightItem = UIBarButtonItem(title: "Skip",
-                                        image: nil,
-                                        target: self,
-                                        action: #selector(skipOnboarding))
-        rightItem.tintColor = .white
-        navigationItem.rightBarButtonItem = rightItem
-    }
-
-    private func createGradientToNextButton() -> CAGradientLayer {
-        let gradient: CAGradientLayer = CAGradientLayer()
-        let firstColor = UIColor(named: "OnboardingNextButtonColor1") ?? .red
-        let secondColor = UIColor(named: "OnboardingNextButtonColor2") ?? .red
-        gradient.colors = [firstColor.cgColor, secondColor.cgColor]
-        gradient.locations = [0.0, 1.0]
-        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
-        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradient.frame = CGRect(x: 0.0, y: 0.0, width: 66, height: 40)
-
-        return gradient
-    }
-
-    @objc private func skipOnboarding() {
-        dismiss(animated: true)
-    }
-
-    @objc private func goNextStep(_ sender: UIButton) {
-        if isNextButtonTapped {
-            skipOnboarding()
-        } else {
-            imageView.image = UIImage(named: "OnboardingSecond")
-            nextButton.setTitle("Start", for: .normal)
-            welcomeLabel.text = "Download and save your Favourit Music"
-            descriptionLabel.text = "Your best music is always with you 🎧"
-            navigationItem.rightBarButtonItem?.isHidden = true
-            isNextButtonTapped = true
-        }
-    }
-
 }
 
 // MARK: - Constant Constraints

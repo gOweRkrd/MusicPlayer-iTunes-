@@ -43,14 +43,14 @@ final class FavouritesViewController: UIViewController {
         }
     }
 
-    // MARK: - Private Method
+    // MARK: - Private Methods
 
     private func setupDelegate() {
         favouritesView.tableView.dataSource = self
         favouritesView.tableView.delegate = self
 
     }
-
+    
     private func showEmptyStateView() {
         view.bringSubviewToFront(favouritesView.emptyStateView)
 
@@ -112,9 +112,10 @@ extension FavouritesViewController: UITableViewDelegate {
     }
 }
 
-extension FavouritesViewController: FavouritiesCellDelegate {
-    // MARK: - FavouritiesCellDelegate
+// MARK: - FavouritiesCellDelegate
 
+extension FavouritesViewController: FavouritiesCellDelegate {
+    
     func didTapPlayButton(with index: Int?) {
         guard let index else {
             return

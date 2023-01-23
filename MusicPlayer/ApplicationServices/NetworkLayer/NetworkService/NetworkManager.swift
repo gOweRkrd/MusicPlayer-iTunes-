@@ -7,11 +7,15 @@
 
 import UIKit
 class NetworkManager {
+    
+    // MARK: - Properties
 
     static let shared = NetworkManager()
     private let cache = NSCache<NSString, UIImage>()
 
     private init() {}
+    
+    // MARK: - Public Methods
 
     func getAllMusic(from country: Country, completed: @escaping (Result<AlbumResult, MusicError>) -> Void) {
         let countryURL = "https://itunes.apple.com/search?country=\(country.rawValue)&term=music"

@@ -11,7 +11,7 @@ class SoundLayerView: UIView {
 
     // MARK: - UI Elements
 
-    lazy var imageViewMain: UIImageView = {
+     lazy var imageViewMain: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
@@ -28,7 +28,7 @@ class SoundLayerView: UIView {
         return label
     }()
 
-    lazy var nameMusicLabel: UILabel = {
+     lazy var nameMusicLabel: UILabel = {
         let label = UILabel()
         label.font = .interRegular(size: 16)
         label.textAlignment = .left

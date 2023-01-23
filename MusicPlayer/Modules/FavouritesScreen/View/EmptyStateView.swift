@@ -8,8 +8,11 @@
 import UIKit
 
 class EmptyStateView: UIView {
-
+    
+    // MARK: - UI Elements
+    
     private lazy var messageLabel: UILabel = {
+        
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 3
@@ -18,6 +21,8 @@ class EmptyStateView: UIView {
         label.textColor = .white
         return label
     }()
+    
+    // MARK: - LifeCycle
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,6 +33,8 @@ class EmptyStateView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Setup Constrains
 
     private func setupView() {
         addSubviews([messageLabel])

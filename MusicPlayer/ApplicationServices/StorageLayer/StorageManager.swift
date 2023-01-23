@@ -10,6 +10,8 @@ import CoreData
 
 class StorageManager {
 
+    // MARK: - Properties
+    
     static let shared = StorageManager()
     private var trackData = [TrackData]()
 
@@ -20,16 +22,7 @@ class StorageManager {
     }
 
     // MARK: - Core Data stack
-    private let persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "TrackCoreData")
-        container.loadPersistentStores(completionHandler: { (_, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-
+    
     @discardableResult
     func fetchItems() -> [TrackModel] {
         let fetchRequest = TrackData.fetchRequest()
@@ -74,8 +67,19 @@ class StorageManager {
         track.trackURL = trackModel.previewUrl
         return track
     }
+    
+    private let persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "TrackCoreData")
+        container.loadPersistentStores(completionHandler: { (_, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
 
     // MARK: - Core Data Saving support
+    
     private func saveContext () {
         if viewContext.hasChanges {
             do {

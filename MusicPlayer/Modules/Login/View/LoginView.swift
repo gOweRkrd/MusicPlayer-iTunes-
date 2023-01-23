@@ -7,17 +7,20 @@
 
 import UIKit
 
-private extension CGFloat {
-    static let height: CGFloat = 50
-    static let logoHeight: CGFloat = 74
-    static let contentStackViewTopAnchor: CGFloat = 20
-}
-
 final class LoginView: BaseView {
-
+    
+    // MARK: - UI Elements
+    
+    let emailTextField = DefaultTextField(placeholder: "Email", isSecureTextEntry: false)
     let singInButton = DefaultButton(titleText: "Sing in")
+    let passwordTextField = DefaultTextField(placeholder: "Password", isSecureTextEntry: true)
+    
+    private let title = TitleLabel(title: "Sign in to your account")
+    private let emailLabel = DescriptionLabel(title: "Email address")
+    private let passwordLabel = DescriptionLabel(title: "Password")
 
     private lazy var contentStackView: UIStackView = {
+        
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +29,7 @@ final class LoginView: BaseView {
     }()
 
     private let logoImage: UIImageView = {
+        
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
         imageView.contentMode = .scaleAspectFit
@@ -33,6 +37,7 @@ final class LoginView: BaseView {
     }()
 
     private let name: UILabel = {
+        
         let label = UILabel()
         label.text = "Music Player"
         label.textAlignment = .center
@@ -41,25 +46,17 @@ final class LoginView: BaseView {
         return label
     }()
 
-    private let title = TitleLabel(title: "Sign in to your account")
-
-    private let emailLabel = DescriptionLabel(title: "Email address")
-
-    let emailTextField = DefaultTextField(placeholder: "Email", isSecureTextEntry: false)
-
-    private let passwordLabel = DescriptionLabel(title: "Password")
-
-    let passwordTextField = DefaultTextField(placeholder: "Password", isSecureTextEntry: true)
-
     private let forgotPasswordButton: UIButton = {
+        
         let button = UIButton()
         button.setTitle("Forgot your password?", for: .normal)
         button.contentHorizontalAlignment = .left
         button.titleLabel?.font = .interRegular(size: 14)
         button.setTitleColor(.cyan, for: .normal)
-
         return button
     }()
+    
+    // MARK: - Setup Constrains
 
     override func addSubviews() {
         super.addSubviews()
@@ -101,4 +98,12 @@ final class LoginView: BaseView {
         contentStackView.setCustomSpacing(CGFloat.baseSpacing, after: passwordLabel)
         contentStackView.setCustomSpacing(CGFloat.baseSpacing, after: passwordTextField)
     }
+}
+
+// MARK: - Constant Constrains
+
+private extension CGFloat {
+    static let height: CGFloat = 50
+    static let logoHeight: CGFloat = 74
+    static let contentStackViewTopAnchor: CGFloat = 20
 }

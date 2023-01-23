@@ -12,10 +12,14 @@ protocol TrackListCellDelegate: AnyObject {
 }
 
 class TrackListCell: UITableViewCell {
+    
+    // MARK: - Properties
 
     weak var delegate: TrackListCellDelegate?
     var index: Int?
 
+    // MARK: - UI Elements
+    
     private let trackLabel: UILabel = {
         let label = UILabel()
         label.text = "Track"
@@ -34,6 +38,8 @@ class TrackListCell: UITableViewCell {
         return button
     }()
 
+    // MARK: - Lifecycle
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -45,15 +51,21 @@ class TrackListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Public Methods
+    
     func setup(nameTrack: String?, index: Int?) {
         trackLabel.text = nameTrack
         self.index = index
     }
 
-    @objc private func playButtonTap(_ sender: UIButton) {
+    // MARK: - Private Methods
+    @objc
+    private func playButtonTap(_ sender: UIButton) {
         delegate?.didTapPlayButton(with: index)
     }
 
+    // MARK: - Setup Constrains
+    
     private func configure() {
         backgroundColor = .black
         contentView.addSubviews([trackLabel, playButton])
@@ -71,6 +83,8 @@ class TrackListCell: UITableViewCell {
         ])
     }
 }
+
+// MARK: - Constant Constraints
 
 private extension CGFloat {
     static let leadingMargin: CGFloat = 10
