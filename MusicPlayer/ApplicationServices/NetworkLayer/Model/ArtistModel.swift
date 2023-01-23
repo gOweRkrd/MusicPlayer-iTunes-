@@ -10,7 +10,7 @@ import UIKit
 struct ArtistModel {
     let image: UIImage?
     let name: String
-    
+
     static func createArtists() -> [ArtistModel] {
         let adelAlbum = ArtistModel(image: UIImage(named: "adele"),
                                    name: "Adele")

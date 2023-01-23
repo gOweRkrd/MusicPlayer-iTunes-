@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct AlbumResult: Decodable {
     let results: [TrackModel]
 }

@@ -35,7 +35,6 @@ extension AlertManager {
     }
 }
 
-
 // MARK: - Registration Errors
 
 extension AlertManager {
@@ -49,7 +48,6 @@ extension AlertManager {
     }
 }
 
-
 // MARK: - Log In Errors
 
 extension AlertManager {
@@ -62,7 +60,6 @@ extension AlertManager {
         self.showBasicAlert(on: vc, title: "Error Signing In", message: "\(error.localizedDescription)")
     }
 }
-
 
 // MARK: - Logout Errors
 

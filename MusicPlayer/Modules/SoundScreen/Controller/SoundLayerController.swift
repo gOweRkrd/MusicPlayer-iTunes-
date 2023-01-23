@@ -8,23 +8,22 @@
 import UIKit
 
 final class SoundLayerController: UIViewController {
-    
+
     // MARK: - Properties
-    
+
     private let soundView = SoundLayerView()
     private var trackList = [TrackModel]()
-    
-    
+
     private let musicManager = MusicManager.shared
     private let storageManager = StorageManager.shared
     private var isFavorite = false
-    
+
     var data: TrackModel? {
         didSet {
             guard let data = data else { return }
             soundView.authorLabel.text = data.artistName
             soundView.nameMusicLabel.text = data.trackName
-            
+
             guard let imageURL = data.artworkUrl100 else {
                 return
             }
@@ -37,37 +36,37 @@ final class SoundLayerController: UIViewController {
             }
         }
     }
-    
+
     // MARK: - Lifecycle
-    
+
     override func loadView() {
         super.loadView()
         self.view = soundView
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupTarget()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         getMusicData()
     }
-    
+
     private func setupTitle(backgroundColor: UIColor) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = backgroundColor
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
+
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.tintColor = .white
     }
-    
+
     private func setupTarget() {
         soundView.playButton.addTarget(self, action: #selector(playBut), for: .touchUpInside)
         soundView.musicSlider.addTarget(self, action: #selector(sliderBut), for: .touchUpInside)
@@ -75,7 +74,7 @@ final class SoundLayerController: UIViewController {
         soundView.leftButton.addTarget(self, action: #selector(leftBut), for: .touchUpInside)
         soundView.rightButton.addTarget(self, action: #selector(rightBut), for: .touchUpInside)
     }
-    
+
     private func setupPlayer() {
         musicManager.observeTrack { [self] observeTrackModel, isNextTrack  in
             guard let observeTrackModel else {
@@ -84,7 +83,7 @@ final class SoundLayerController: UIViewController {
                 }
                 return
             }
-            
+
             soundView.musicSlider.maximumValue = observeTrackModel.maximumValue
             soundView.musicSlider.value = observeTrackModel.currentValue
             soundView.minuteStartLabel.text = observeTrackModel.startTime
@@ -99,7 +98,7 @@ final class SoundLayerController: UIViewController {
             soundView.favouritesButton.setImage(UIImage(named: "heart2"), for: .normal)
         }
     }
-    
+
     @objc private func playBut () {
         if musicManager.isPlayed {
             soundView.playButton.setImage(UIImage(named: "play"), for: .normal)
@@ -109,16 +108,16 @@ final class SoundLayerController: UIViewController {
             musicManager.playTrack()
         }
     }
-    
+
     @objc private func sliderBut () {
         musicManager.changeTrackTime(value: Double(soundView.musicSlider.value))
     }
-    
+
     @objc private func favouritesTapButton () {
         guard let data else {
             return
         }
-        
+
         if isFavorite {
             storageManager.delete(data)
         } else {
@@ -127,17 +126,17 @@ final class SoundLayerController: UIViewController {
         isFavorite.toggle()
         changeFavorite(isFavorite: isFavorite)
     }
-    
+
     @objc private func leftBut () {
         musicManager.previousTrack()
         getMusicData()
     }
-    
+
     @objc private func rightBut () {
         musicManager.nextTrack()
         getMusicData()
     }
-    
+
     private func getMusicData() {
         if let model = musicManager.getModel() {
             data = model

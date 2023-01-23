@@ -106,11 +106,11 @@ final class RegistrationView: BaseView {
             logoImage.heightAnchor.constraint(equalToConstant: CGFloat.logoHeight),
             title.heightAnchor.constraint(equalToConstant: CGFloat.height),
             name.heightAnchor.constraint(equalToConstant: CGFloat.height),
-            
+
             nameTextField.heightAnchor.constraint(equalToConstant: CGFloat.height),
-            
+
             emailTextField.heightAnchor.constraint(equalToConstant: CGFloat.height),
-            
+
             passwordTextField.heightAnchor.constraint(equalToConstant: CGFloat.height),
             singInButton.heightAnchor.constraint(equalToConstant: CGFloat.height)
         ])

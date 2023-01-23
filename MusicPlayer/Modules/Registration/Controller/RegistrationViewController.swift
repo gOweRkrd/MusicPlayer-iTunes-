@@ -10,9 +10,9 @@ import FirebaseAuth
 import Firebase
 
 final class RegistrationViewController: UIViewController {
-    
+
     private let customView = RegistrationView()
-    
+
     override func loadView() {
         super.loadView()
         view = customView
@@ -22,16 +22,16 @@ final class RegistrationViewController: UIViewController {
         super.viewDidLoad()
         addTarget()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         showOnboarding()
     }
 
     private func addTarget() {
         customView.singInButton.addTarget(self, action: #selector(singInButtonTapped), for: .touchUpInside)
-        customView.signInLabel.addGestureRecognizer(UITapGestureRecognizer(target:self, action: #selector(tapLabel)))
+        customView.signInLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapLabel)))
     }
 
     @objc private func singInButtonTapped() {
@@ -82,7 +82,7 @@ final class RegistrationViewController: UIViewController {
             navigationController?.pushViewController(viewController, animated: true)
         }
     }
-    
+
     private func showOnboarding() {
         let userDefaults = UserDefaults.standard
         let onBoardingWasViewed = userDefaults.bool(forKey: "OnBoardingWasViewed")

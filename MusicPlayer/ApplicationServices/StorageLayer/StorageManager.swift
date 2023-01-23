@@ -9,27 +9,27 @@ import Foundation
 import CoreData
 
 class StorageManager {
-    
+
     static let shared = StorageManager()
     private var trackData = [TrackData]()
-    
+
     private let viewContext: NSManagedObjectContext
-    
+
     private init() {
         viewContext = persistentContainer.viewContext
     }
-    
+
     // MARK: - Core Data stack
     private let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TrackCoreData")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
         return container
     }()
-    
+
     @discardableResult
     func fetchItems() -> [TrackModel] {
         let fetchRequest = TrackData.fetchRequest()
@@ -42,7 +42,7 @@ class StorageManager {
             return []
         }
     }
-    
+
     func saveTrack(_ track: TrackModel) {
         if hasModel(track) {
             return
@@ -52,7 +52,7 @@ class StorageManager {
         saveContext()
         fetchItems()
     }
-    
+
     func delete(_ trackModel: TrackModel) {
         guard let track = trackData.first(where: {$0.trackURL == trackModel.previewUrl}) else {
             return
@@ -61,11 +61,11 @@ class StorageManager {
         saveContext()
         fetchItems()
     }
-    
+
     func hasModel(_ trackModel: TrackModel) -> Bool {
         trackData.first(where: {$0.trackURL == trackModel.previewUrl}) != nil
     }
-    
+
     private func createItem(from trackModel: TrackModel) -> TrackData {
         let track = TrackData(context: viewContext)
         track.artistName = trackModel.artistName
@@ -74,7 +74,7 @@ class StorageManager {
         track.trackURL = trackModel.previewUrl
         return track
     }
-    
+
     // MARK: - Core Data Saving support
     private func saveContext () {
         if viewContext.hasChanges {

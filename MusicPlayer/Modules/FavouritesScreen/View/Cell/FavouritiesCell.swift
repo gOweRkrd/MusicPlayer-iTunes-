@@ -8,14 +8,14 @@
 import UIKit
 
 protocol FavouritiesCellDelegate: AnyObject {
-    func didTapPlayButton(with index: Int?) 
+    func didTapPlayButton(with index: Int?)
 }
 
 final class FavouritiesCell: UITableViewCell {
 
     weak var delegate: FavouritiesCellDelegate?
     var index: Int?
-    
+
     var data: TrackModel? {
         didSet {
             guard let data = data else { return }
@@ -23,7 +23,7 @@ final class FavouritiesCell: UITableViewCell {
             nameMusicLabelCell.text = data.trackName
         }
     }
-        
+
     // MARK: - UI Elements
 
     lazy var performerMusicLabelCell: UILabel = {
@@ -79,17 +79,17 @@ extension FavouritiesCell {
     func addSybViewCell() {
         contentView.addSubviews([performerMusicLabelCell, nameMusicLabelCell, playButton])
     }
-    
+
     func setupConstraintsCell() {
-        
+
         NSLayoutConstraint.activate([
             performerMusicLabelCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             performerMusicLabelCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            
+
             nameMusicLabelCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
             nameMusicLabelCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             nameMusicLabelCell.trailingAnchor.constraint(equalTo: playButton.leadingAnchor),
-            
+
             playButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             playButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             playButton.heightAnchor.constraint(equalToConstant: 30),

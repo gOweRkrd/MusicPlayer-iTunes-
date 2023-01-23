@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension TrackData {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<TrackData> {
@@ -23,6 +22,6 @@ extension TrackData {
 
 }
 
-extension TrackData : Identifiable {
+extension TrackData: Identifiable {
 
 }

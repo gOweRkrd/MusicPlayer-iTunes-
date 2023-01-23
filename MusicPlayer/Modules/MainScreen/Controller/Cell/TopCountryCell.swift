@@ -12,10 +12,10 @@ protocol TopCountryCellDelegate: AnyObject {
 }
 
 class TopCountryCell: UITableViewCell {
-    
+
     weak var delegate: TopCountryCellDelegate?
     var index: Int?
-    
+
     private let imageTrack: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -23,17 +23,17 @@ class TopCountryCell: UITableViewCell {
         image.clipsToBounds = true
         return image
     }()
-    
+
     private let nameArtistLabel: UILabel = {
         let label = UILabel()
         label.text = "Artist"
         label.textColor = .cyan
         label.textAlignment = .left
-        
+
         label.font = .interBold(size: 14)
         return label
     }()
-    
+
     private let nameTrackLabel: UILabel = {
         let label = UILabel()
         label.text = "Track"
@@ -43,7 +43,7 @@ class TopCountryCell: UITableViewCell {
         label.font = .interRegular(size: 14)
         return label
     }()
-    
+
     private let timeTrackLabel: UILabel = {
         let label = UILabel()
         label.text = "3.56"
@@ -52,7 +52,7 @@ class TopCountryCell: UITableViewCell {
         label.font = .interRegular(size: 14)
         return label
     }()
-    
+
     private lazy var playTrack: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "play"), for: .normal)
@@ -60,40 +60,40 @@ class TopCountryCell: UITableViewCell {
         button.layer.masksToBounds = true
         return button
     }()
-    
+
     private let activityIndicator = UIActivityIndicatorView(style: .large)
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+
         selectionStyle = .none
         configure()
-        
+
         activityIndicator.color = .cyan
-       
+
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         imageTrack.image = nil
     }
-    
+
     func setup(config: TopCountryCellConfig) {
         nameArtistLabel.text = config.nameArtist
         nameTrackLabel.text = config.nameTrack
-     
+
         if let minutesTrack = config.minutesTrack {
             timeTrackLabel.text = String(format: "%.2f", Double(minutesTrack) / 60000)
         }
-        
+
         guard let imageURL = config.imageURL else {
             return
         }
-        
+
         NetworkManager.shared.downloadImage(from: imageURL) { image in
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
@@ -101,11 +101,11 @@ class TopCountryCell: UITableViewCell {
             }
         }
     }
-    
+
     @objc private func playButMain () {
         delegate?.didTapPlayButton(with: index)
     }
-    
+
     private func configure() {
         backgroundColor = .clear
         contentView.addSubviews([imageTrack,
@@ -114,29 +114,29 @@ class TopCountryCell: UITableViewCell {
                                  playTrack])
         imageTrack.addSubviews([activityIndicator])
         activityIndicator.startAnimating()
-        
+
         NSLayoutConstraint.activate([
             imageTrack.topAnchor.constraint(equalTo: topAnchor, constant: .leadingMargin),
             imageTrack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .leadingMargin),
             imageTrack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: .trailingMargin),
             imageTrack.widthAnchor.constraint(equalTo: imageTrack.heightAnchor),
-            
+
             nameArtistLabel.topAnchor.constraint(equalTo: imageTrack.topAnchor),
             nameArtistLabel.leadingAnchor.constraint(equalTo: imageTrack.trailingAnchor, constant: .leadingMargin),
             nameArtistLabel.trailingAnchor.constraint(equalTo: playTrack.leadingAnchor, constant: .trailingMargin),
-            
+
             nameTrackLabel.topAnchor.constraint(equalTo: nameArtistLabel.bottomAnchor, constant: .nameTrackTopMargin),
             nameTrackLabel.leadingAnchor.constraint(equalTo: imageTrack.trailingAnchor, constant: .leadingMargin),
             nameTrackLabel.trailingAnchor.constraint(equalTo: playTrack.leadingAnchor, constant: .trailingMargin),
             nameTrackLabel.bottomAnchor.constraint(equalTo: imageTrack.bottomAnchor),
-            
+
             playTrack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .trailingMargin),
             playTrack.centerYAnchor.constraint(equalTo: centerYAnchor),
             playTrack.heightAnchor.constraint(equalToConstant: .playTrackHeight),
             playTrack.widthAnchor.constraint(equalToConstant: .playTrackHeight),
-        
+
             activityIndicator.centerXAnchor.constraint(equalTo: imageTrack.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: imageTrack.centerYAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: imageTrack.centerYAnchor)
         ])
     }
 }

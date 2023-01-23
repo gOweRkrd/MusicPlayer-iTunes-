@@ -8,7 +8,7 @@
 import UIKit
 
 class EmptyStateView: UIView {
-    
+
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -18,21 +18,20 @@ class EmptyStateView: UIView {
         label.textColor = .white
         return label
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         setupView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
+
     private func setupView() {
         addSubviews([messageLabel])
-        
+
         NSLayoutConstraint.activate([
             messageLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

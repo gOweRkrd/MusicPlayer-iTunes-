@@ -48,7 +48,7 @@ class AuthService {
     }
 
     public func signIn(with userRequest: LoginUserRequest, completion: @escaping (Error?) -> Void) {
-        Auth.auth().signIn(withEmail: userRequest.email, password: userRequest.password) { result, error in
+        Auth.auth().signIn(withEmail: userRequest.email, password: userRequest.password) { _, error in
             if let error = error {
                 completion(error)
                 return
@@ -85,7 +85,7 @@ class AuthService {
                    let email = snapshotData["email"] as? String {
                     let user = User(username: username, email: email, userUID: userUID)
                     completion(user, nil)
-                    
+
                 }
             }
     }
