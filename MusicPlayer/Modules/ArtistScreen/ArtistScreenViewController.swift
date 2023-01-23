@@ -15,7 +15,7 @@ class ArtistScreenViewController: UIViewController {
     
     private var trackList = [TrackModel]()
     private let musicManager = MusicManager.shared
-    
+ 
     // MARK: - UI Elements
     
     private let cellReuseIdentifier = "cell"
@@ -135,6 +135,5 @@ extension ArtistScreenViewController: TrackListCellDelegate {
         }
         musicManager.createTrackList(trackList)
         musicManager.playTrack(by: index)
-        
     }
 }

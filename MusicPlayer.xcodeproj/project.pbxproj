@@ -13,6 +13,7 @@
 		50306520296BF1D000E46455 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030651F296BF1D000E46455 /* FavouritesViewController.swift */; };
 		50306523296BF20200E46455 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50306522296BF20200E46455 /* FavouritesView.swift */; };
 		50306527296C020300E46455 /* FavouritiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50306526296C020300E46455 /* FavouritiesCell.swift */; };
+		50C61CEF297E814D005EE0BE /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C61CEE297E814D005EE0BE /* MainScreenView.swift */; };
 		D8281E8D2977086C006EF86F /* TreckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8281E882977086C006EF86F /* TreckModel.swift */; };
 		D8281E9C29771CFA006EF86F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8281E9B29771CFA006EF86F /* NetworkManager.swift */; };
 		D8281E9E29772285006EF86F /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8281E9D29772285006EF86F /* MainScreenViewController.swift */; };
@@ -78,6 +79,7 @@
 		5030651F296BF1D000E46455 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		50306522296BF20200E46455 /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		50306526296C020300E46455 /* FavouritiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritiesCell.swift; sourceTree = "<group>"; };
+		50C61CEE297E814D005EE0BE /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		D8281E882977086C006EF86F /* TreckModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreckModel.swift; sourceTree = "<group>"; };
 		D8281E9B29771CFA006EF86F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D8281E9D29772285006EF86F /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +219,23 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		50C61CEC297E80A8005EE0BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D8281E9329770894006EF86F /* Cell */,
+				50C61CEE297E814D005EE0BE /* MainScreenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		50C61CED297E80B3005EE0BE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D8281E9D29772285006EF86F /* MainScreenViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		D8281E822977086C006EF86F /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,8 +275,8 @@
 		D8281E9029770894006EF86F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D8281E9329770894006EF86F /* Cell */,
-				D8281E9D29772285006EF86F /* MainScreenViewController.swift */,
+				50C61CEC297E80A8005EE0BE /* View */,
+				50C61CED297E80B3005EE0BE /* Controller */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -427,10 +446,9 @@
 		D9333909297895D500BC720A /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
+				D933391F2979B77800BC720A /* Model */,
 				D933391D2979B75D00BC720A /* View */,
 				D933391E2979B76400BC720A /* Controllers */,
-				D933391F2979B77800BC720A /* Model */,
-				D933391029799B5A00BC720A /* DetailUserViewController.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -495,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				D933390C2978981C00BC720A /* UserInfoViewController.swift */,
+				D933391029799B5A00BC720A /* DetailUserViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -702,6 +721,7 @@
 				D8290144297B17C90091802A /* TrackCoreData.xcdatamodeld in Sources */,
 				D8290148297B18120091802A /* TrackData+CoreDataProperties.swift in Sources */,
 				50306515296ACF9A00E46455 /* SoundLayerController.swift in Sources */,
+				50C61CEF297E814D005EE0BE /* MainScreenView.swift in Sources */,
 				D9B29E63296F34E5003E8825 /* UIColorExtension+TabBar.swift in Sources */,
 				D9ACAB89296D91B10000805F /* DefaultButton.swift in Sources */,
 				50306523296BF20200E46455 /* FavouritesView.swift in Sources */,

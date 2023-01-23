@@ -10,8 +10,11 @@ import UIKit
 class SoundLayerView: UIView {
 
     // MARK: - UI Elements
+    
+    let activityIndicator = UIActivityIndicatorView(style: .large)
 
      lazy var imageViewMain: UIImageView = {
+         
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
@@ -20,6 +23,7 @@ class SoundLayerView: UIView {
     }()
 
     lazy var authorLabel: UILabel = {
+        
         let label = UILabel()
         label.text = "Loading..."
         label.font = .interRegular(size: 22)
@@ -37,6 +41,7 @@ class SoundLayerView: UIView {
     }()
 
     lazy var favouritesButton: UIButton = {
+        
         let button = UIButton()
         button.setTitleColor(UIColor.blue, for: .normal)
         button.setImage(UIImage(named: "heart2"), for: .normal)
@@ -44,6 +49,7 @@ class SoundLayerView: UIView {
     }()
 
     lazy var musicSlider: UISlider = {
+        
         let slider = UISlider()
         slider.minimumTrackTintColor = .cyan
         slider.maximumTrackTintColor = .gray
@@ -52,6 +58,7 @@ class SoundLayerView: UIView {
     }()
 
     lazy var minuteStartLabel: UILabel = {
+        
         let label = UILabel()
         label.text = "0:00"
         label.font = .interRegular(size: 16)
@@ -61,6 +68,7 @@ class SoundLayerView: UIView {
     }()
 
     lazy var minuteFinishLabel: UILabel = {
+        
         let label = UILabel()
         label.text = "0:00"
         label.font = .interRegular(size: 16)
@@ -70,6 +78,7 @@ class SoundLayerView: UIView {
     }()
 
     lazy var playButton: UIButton = {
+        
         let button = UIButton()
         button.setImage(UIImage(named: "play"), for: .normal)
         button.layer.masksToBounds = true
@@ -85,6 +94,7 @@ class SoundLayerView: UIView {
     }()
 
     lazy var rightButton: UIButton = {
+        
         let button = UIButton()
         button.setImage(UIImage(named: "right 1"), for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
@@ -93,14 +103,13 @@ class SoundLayerView: UIView {
     }()
 
     lazy var buttonStack: UIStackView = {
+        
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.alignment = .center
         stack.spacing = 38
         return stack
     }()
-
-    let activityIndicator = UIActivityIndicatorView(style: .large)
 
     // MARK: - Lifecycle
 
