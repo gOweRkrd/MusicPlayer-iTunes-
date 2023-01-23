@@ -1,10 +1,3 @@
-//
-//  TabBarController.swift
-//  CookBook
-//
-//  Created by Александр Косяков on 11.01.2023.
-//
-
 import UIKit
 
 final class TabBarController: UITabBarController {

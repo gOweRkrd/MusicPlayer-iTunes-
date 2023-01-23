@@ -1,11 +1,6 @@
-//
-//  UITapGestureRecognizer+Ext.swift
-//  MusicPlayer
-//
-//  Created by Артем Галай on 12.01.23.
-//
 
 import UIKit
+
 extension UITapGestureRecognizer {
 
     func didTapAttributedTextInLabel(label: UILabel, inRange targetRange: NSRange) -> Bool {

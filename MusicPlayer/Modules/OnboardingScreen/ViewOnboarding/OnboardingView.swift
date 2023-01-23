@@ -1,27 +1,17 @@
-//
-//  OnboardingFirstViewController.swift
-//  MusicPlayer
-//
-//  Created by Дария Григорьева on 08.01.2023.
-//
-
 import UIKit
-class OnboardingViewController: UIViewController {
-    
-    // MARK: - Properties
-    
-    private var isNextButtonTapped = false
+
+class OnboardingView: UIView {
     
     // MARK: - UI Elements
 
-    private let imageView: UIImageView = {
+     let imageView: UIImageView = {
         
         let imageView = UIImageView()
         imageView.image = UIImage(named: "OnboardingFirst")
         return imageView
     }()
 
-    private let welcomeLabel: UILabel = {
+     lazy var welcomeLabel: UILabel = {
         
         let label = UILabel()
         label.text = "Welcome to the world of music"
@@ -32,7 +22,7 @@ class OnboardingViewController: UIViewController {
         return label
     }()
 
-    private let descriptionLabel: UILabel = {
+     lazy var descriptionLabel: UILabel = {
         
         let label = UILabel()
         label.text = "We are a small boutique music venue in the heart of internet"
@@ -43,43 +33,16 @@ class OnboardingViewController: UIViewController {
         return label
     }()
 
-    private lazy var nextButton: UIButton = {
+    lazy var nextButton: UIButton = {
         let button = UIButton()
         button.setTitle("Next", for: .normal)
-        button.addTarget(self, action: #selector(goNextStep(_:)), for: .touchUpInside)
         button.layer.insertSublayer(createGradientToNextButton(), at: 0)
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
         return button
     }()
-
-    // MARK: - Lifecycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = .black
-
-        setupView()
-        setupNavigationItem()
-        saveUserDefaults()
-    }
-
     // MARK: - Private Methods
-    
-    private func saveUserDefaults() {
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(true, forKey: "OnBoardingWasViewed")
-    }
-    
-    private func setupNavigationItem() {
-        let rightItem = UIBarButtonItem(title: "Skip",
-                                        image: nil,
-                                        target: self,
-                                        action: #selector(skipOnboarding))
-        rightItem.tintColor = .white
-        navigationItem.rightBarButtonItem = rightItem
-    }
     
     private func createGradientToNextButton() -> CAGradientLayer {
         let gradient: CAGradientLayer = CAGradientLayer()
@@ -90,50 +53,45 @@ class OnboardingViewController: UIViewController {
         gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: 66, height: 40)
-
         return gradient
     }
     
-    @objc
-    private func skipOnboarding() {
-        dismiss(animated: true)
+    // MARK: - Lifecycle
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        setupView()
     }
 
-    @objc
-    private func goNextStep(_ sender: UIButton) {
-        if isNextButtonTapped {
-            skipOnboarding()
-        } else {
-            imageView.image = UIImage(named: "OnboardingSecond")
-            nextButton.setTitle("Start", for: .normal)
-            welcomeLabel.text = "Download and save your Favourit Music"
-            descriptionLabel.text = "Your best music is always with you 🎧"
-            navigationItem.rightBarButtonItem?.isHidden = true
-            isNextButtonTapped = true
-        }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
+}
+    
+// MARK: - Setup Constrains
 
-    // MARK: - Setup Constrains
+extension OnboardingView {
     
     private func setupView() {
-        view.addSubviews([imageView, welcomeLabel, descriptionLabel, nextButton])
+        self.addSubviews([imageView, welcomeLabel, descriptionLabel, nextButton])
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: .imageViewTopAnchor),
+            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: .imageViewTopAnchor),
             imageView.heightAnchor.constraint(equalToConstant: .imageViewHeightAnchorAnchor),
             imageView.widthAnchor.constraint(equalToConstant: .imageViewHeightAnchorAnchor),
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
             welcomeLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .welcomeLabelTopAnchor),
-            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .welcomeDefaultOffset),
-            welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.welcomeDefaultOffset),
-            welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            welcomeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .welcomeDefaultOffset),
+            welcomeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -.welcomeDefaultOffset),
+            welcomeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
             descriptionLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: .descriptionLabelTopAnchor),
-            descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
             nextButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .nextButtonTopAnchor),
-            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: .nextButtonTrailingAnchor),
+            nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: .nextButtonTrailingAnchor),
             nextButton.widthAnchor.constraint(equalToConstant: .nextButtonWidthAnchor),
             nextButton.heightAnchor.constraint(equalToConstant: .nextButtonHeightAnchor)
         ])
@@ -156,3 +114,6 @@ private extension CGFloat {
     static let nextButtonWidthAnchor: CGFloat = 66
     static let nextButtonHeightAnchor: CGFloat = 40
 }
+
+    
+    

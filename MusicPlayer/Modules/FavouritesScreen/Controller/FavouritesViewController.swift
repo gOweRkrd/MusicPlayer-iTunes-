@@ -1,10 +1,3 @@
-//
-//  FavouritesViewController.swift
-//  MusicPlayer
-//
-//  Created by Александр Косяков on 09.01.2023.
-//
-
 import UIKit
 
 final class FavouritesViewController: UIViewController {

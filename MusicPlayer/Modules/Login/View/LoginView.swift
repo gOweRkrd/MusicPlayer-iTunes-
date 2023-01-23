@@ -1,10 +1,3 @@
-//
-//  LoginView.swift
-//  MusicPlayer
-//
-//  Created by Артем Галай on 10.01.23.
-//
-
 import UIKit
 
 final class LoginView: BaseView {

@@ -1,10 +1,3 @@
-//
-//  MainScreenView.swift
-//  MusicPlayer
-//
-//  Created by Александр Косяков on 23.01.2023.
-//
-
 import UIKit
 
 class MainScreenView: UIView {

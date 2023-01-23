@@ -1,10 +1,3 @@
-//
-//  BaseView.swift
-//  MusicPlayer
-//
-//  Created by Артем Галай on 10.01.23.
-//
-
 import UIKit
 
 extension CGFloat {

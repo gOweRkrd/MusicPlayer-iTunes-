@@ -1,10 +1,3 @@
-//
-//  EmptyStateView.swift
-//  MusicPlayer
-//
-//  Created by Дария Григорьева on 21.01.2023.
-//
-
 import UIKit
 
 class EmptyStateView: UIView {

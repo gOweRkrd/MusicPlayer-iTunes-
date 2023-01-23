@@ -1,10 +1,3 @@
-//
-//  RegistrationViewController.swift
-//  MusicPlayer
-//
-//  Created by Артем Галай on 12.01.23.
-//
-
 import UIKit
 import FirebaseAuth
 import Firebase

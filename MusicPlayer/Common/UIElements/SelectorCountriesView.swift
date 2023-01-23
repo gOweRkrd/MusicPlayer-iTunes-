@@ -1,10 +1,3 @@
-//
-//  SelectorCountriesView.swift
-//  MusicPlayer
-//
-//  Created by Дария Григорьева on 18.01.2023.
-//
-
 import UIKit
 
 protocol SelectorCountriesViewDelegate: AnyObject {

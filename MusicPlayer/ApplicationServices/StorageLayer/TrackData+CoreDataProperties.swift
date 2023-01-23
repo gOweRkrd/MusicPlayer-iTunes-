@@ -1,11 +1,3 @@
-//
-//  TrackData+CoreDataProperties.swift
-//  MusicPlayer
-//
-//  Created by Дария Григорьева on 20.01.2023.
-//
-//
-
 import Foundation
 import CoreData
 

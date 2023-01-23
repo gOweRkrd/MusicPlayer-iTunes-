@@ -1,40 +1,27 @@
-//
-//  ArtistScreenViewController.swift
-//  MusicPlayer
-//
-//  Created by Дария Григорьева on 18.01.2023.
-//
-
 import UIKit
 
-class ArtistScreenViewController: UIViewController {
+final class ArtistScreenViewController: UIViewController {
     
     // MARK: - Properties
     
     var nameArtist: String?
     
-    private var trackList = [TrackModel]()
     private let musicManager = MusicManager.shared
- 
-    // MARK: - UI Elements
-    
-    private let cellReuseIdentifier = "cell"
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = .clear
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(TrackListCell.self, forCellReuseIdentifier: "cell")
-        return tableView
-    }()
+    private let artistViewScreen = ArtistViewScreen()
+    private var trackList = [TrackModel]()
     
     // MARK: - Lifecycle
     
+    override func loadView() {
+        super.loadView()
+        self.view = artistViewScreen
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView()
         getTracksArtist()
+        artistViewScreen.tableView.dataSource = self
+        artistViewScreen.tableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,26 +63,12 @@ class ArtistScreenViewController: UIViewController {
                 case .success(let album):
                     DispatchQueue.main.async { [self] in
                         trackList = album.results.filter { $0.trackName != nil && $0.previewUrl != nil }
-                        tableView.reloadData()
+                        artistViewScreen.tableView.reloadData()
                     }
                 case .failure(let error):
                     print(error)
             }
         }
-    }
-    
-    // MARK: - Setup Constrains
-    
-    private func setupView() {
-        view.backgroundColor = UIColor(named: "mainColor")
-        view.addSubviews([tableView])
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
     }
 }
 

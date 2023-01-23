@@ -1,10 +1,3 @@
-//
-//  UserInfoView.swift
-//  MusicPlayer
-//
-//  Created by Артем Галай on 19.01.23.
-//
-
 import UIKit
 
 final class UserInfoView: BaseView {

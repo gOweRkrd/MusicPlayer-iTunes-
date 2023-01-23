@@ -1,12 +1,6 @@
-//
-//  NetworkManager.swift
-//  MusicPlayer
-//
-//  Created by Дария Григорьева on 17.01.2023.
-//
-
 import UIKit
-class NetworkManager {
+
+final class NetworkManager {
     
     // MARK: - Properties
 

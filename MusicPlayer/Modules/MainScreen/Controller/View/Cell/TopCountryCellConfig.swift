@@ -1,10 +1,3 @@
-//
-//  TopCountryCellConfig.swift
-//  MusicPlayer
-//
-//  Created by Дария Григорьева on 22.01.2023.
-//
-
 import Foundation
 
 struct TopCountryCellConfig {

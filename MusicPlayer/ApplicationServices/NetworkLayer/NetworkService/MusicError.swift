@@ -1,10 +1,3 @@
-//
-//  MusicError.swift
-//  MusicPlayer
-//
-//  Created by Дария Григорьева on 18.01.2023.
-//
-
 import Foundation
 
 enum MusicError: String, Error {

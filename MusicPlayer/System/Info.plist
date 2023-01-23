@@ -9,8 +9,6 @@
 		<string>Poppins-Regular.ttf</string>
 		<string>Poppins-Bold.ttf</string>
 	</array>
-	<key>CFBundleIdentifier</key>
-	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

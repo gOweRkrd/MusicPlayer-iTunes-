@@ -1,10 +1,3 @@
-//
-//  UIStackView+Ext.swift
-//  MusicPlayer
-//
-//  Created by Артем Галай on 11.01.23.
-//
-
 import UIKit
 
 extension UIStackView {

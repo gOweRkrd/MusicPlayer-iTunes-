@@ -1,10 +1,3 @@
-//
-//  MainScreenViewController.swift
-//  MusicPlayer
-//
-//  Created by Дария Григорьева on 17.01.2023.
-//
-
 import UIKit
 import AVKit
 
