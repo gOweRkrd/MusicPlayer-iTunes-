@@ -1,6 +1,6 @@
 import UIKit
 
-class OnboardingView: UIView {
+final class OnboardingView: UIView {
     
     // MARK: - UI Elements
 

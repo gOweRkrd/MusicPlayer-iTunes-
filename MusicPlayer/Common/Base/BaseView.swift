@@ -8,7 +8,7 @@ extension CGFloat {
     static let baseCornerRadius: CGFloat = 10
 }
 
-class BaseView: UIView {
+ class BaseView: UIView {
 
     init() {
         super.init(frame: .zero)

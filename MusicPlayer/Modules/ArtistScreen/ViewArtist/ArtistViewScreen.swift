@@ -1,6 +1,6 @@
 import UIKit
 
-class ArtistViewScreen: UIView {
+final class ArtistViewScreen: UIView {
     
     // MARK: - UI Elements
     

@@ -1,7 +1,7 @@
 import UIKit
 import AVKit
 
-class MainScreenViewController: UIViewController {
+final class MainScreenViewController: UIViewController {
     
     // MARK: - Properties
     

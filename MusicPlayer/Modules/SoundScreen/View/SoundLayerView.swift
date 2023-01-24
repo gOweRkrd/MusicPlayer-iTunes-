@@ -1,6 +1,6 @@
 import UIKit
 
-class SoundLayerView: UIView {
+final class SoundLayerView: UIView {
 
     // MARK: - UI Elements
     

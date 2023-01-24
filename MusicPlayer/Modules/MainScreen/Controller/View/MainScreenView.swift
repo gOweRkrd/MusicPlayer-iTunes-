@@ -1,6 +1,6 @@
 import UIKit
 
-class MainScreenView: UIView {
+final class MainScreenView: UIView {
 
     // MARK: - UI Elements
     

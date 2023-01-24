@@ -4,7 +4,7 @@ protocol TrackListCellDelegate: AnyObject {
     func didTapPlayButton(with index: Int?)
 }
 
-class TrackListCell: UITableViewCell {
+final class TrackListCell: UITableViewCell {
     
     // MARK: - Properties
 

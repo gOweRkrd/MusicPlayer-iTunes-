@@ -2,7 +2,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-class AuthService {
+final class AuthService {
 
     // MARK: - Properties
     
