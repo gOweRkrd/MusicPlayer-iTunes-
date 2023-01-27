@@ -7,5 +7,5 @@ struct User {
 }
 
 struct UserInfoModel {
-    static let categories: [String] = ["Name", "Email", "Language", "Privacy", "Storage", "Audio Quality"]
+    static let categories: [String] = ["Name", "Email"]
 }

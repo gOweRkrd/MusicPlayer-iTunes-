@@ -8,7 +8,7 @@ final class LoginView: BaseView {
     let singInButton = DefaultButton(titleText: "Sing in")
     let passwordTextField = DefaultTextField(placeholder: "Password", isSecureTextEntry: true)
     
-    private let title = TitleLabel(title: "Sign in to your account")
+    private let title = LabelSetup(title: "Sign in to your account")
     private let emailLabel = DescriptionLabel(title: "Email address")
     private let passwordLabel = DescriptionLabel(title: "Password")
 

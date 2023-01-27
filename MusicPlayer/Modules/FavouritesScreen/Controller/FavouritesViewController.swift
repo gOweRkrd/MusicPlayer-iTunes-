@@ -97,9 +97,9 @@ extension FavouritesViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
         let soundVC = SoundLayerController()
-
+    
         soundVC.data = trackList[indexPath.row]
         navigationController?.pushViewController(soundVC, animated: true)
     }

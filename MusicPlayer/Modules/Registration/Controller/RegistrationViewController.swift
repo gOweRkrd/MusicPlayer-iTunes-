@@ -89,7 +89,7 @@ final class RegistrationViewController: UIViewController {
         let range = (customView.signInLabel.text as? NSString ?? "").range(of: "Sign in")
         
         if gesture.didTapAttributedTextInLabel(label: customView.signInLabel, inRange: range) {
-            let viewController = LoginViewController()
+            let viewController = LoginController()
             navigationController?.pushViewController(viewController, animated: true)
         }
     }

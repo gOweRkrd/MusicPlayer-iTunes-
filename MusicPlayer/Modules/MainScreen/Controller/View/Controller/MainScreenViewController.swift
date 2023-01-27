@@ -62,11 +62,11 @@ final class MainScreenViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 
 extension MainScreenViewController: UICollectionViewDataSource {
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         artists.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  "cell", for: indexPath) as? PopularAlbumsCell else {
             return UICollectionViewCell()
@@ -79,7 +79,7 @@ extension MainScreenViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension MainScreenViewController: UICollectionViewDelegate {
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let artistVC = ArtistScreenViewController()
         artistVC.nameArtist = artists[indexPath.item].name
@@ -90,11 +90,11 @@ extension MainScreenViewController: UICollectionViewDelegate {
 // MARK: - UITableViewDataSource
 
 extension MainScreenViewController: UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         countryTracks.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TopCountryCell else {
             return UITableViewCell()
@@ -114,9 +114,18 @@ extension MainScreenViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension MainScreenViewController: UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let soundVC = SoundLayerController()
+        
+        soundVC.data = countryTracks[indexPath.row]
+        navigationController?.pushViewController(soundVC, animated: true)
     }
 }
 
@@ -125,7 +134,7 @@ extension MainScreenViewController: TopCountryCellDelegate {
         guard let index else {
             return
         }
-
+        
         musicManager.createTrackList(countryTracks)
         musicManager.playTrack(by: index)
     }
@@ -134,7 +143,7 @@ extension MainScreenViewController: TopCountryCellDelegate {
 // MARK: - SelectorCountriesViewDelegate
 
 extension MainScreenViewController: SelectorCountriesViewDelegate {
-
+    
     func didTapCountryButton(_ country: Country) {
         fetchAlbum(from: country)
     }

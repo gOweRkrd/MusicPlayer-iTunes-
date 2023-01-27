@@ -9,7 +9,7 @@ final class RegistrationView: BaseView {
     let emailTextField = DefaultTextField(placeholder: "Email", isSecureTextEntry: false)
     let passwordTextField = DefaultTextField(placeholder: "Password", isSecureTextEntry: true)
     
-    private let title = TitleLabel(title: "Create your account")
+    private let title = LabelSetup(title: "Create your account")
     private let nameLabel = DescriptionLabel(title: "Name")
     private let emailLabel = DescriptionLabel(title: "Email address")
     private let passwordLabel = DescriptionLabel(title: "Password")

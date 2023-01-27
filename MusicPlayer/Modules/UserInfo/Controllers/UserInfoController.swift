@@ -1,6 +1,6 @@
 import UIKit
 
-final class UserInfoViewController: UIViewController {
+final class UserInfoController: UIViewController {
     
     // MARK: - Properties
 
@@ -16,7 +16,6 @@ final class UserInfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupDelegate()
         fetchInfoUser()
         customView.logOutButton.addTarget(self, action: #selector(didTapLogout), for: .touchUpInside)
 
@@ -31,15 +30,12 @@ final class UserInfoViewController: UIViewController {
             }
             if let user = user {
                 self.customView.titleLabel.text = "Welcome, \(user.username)"
+                self.customView.nameUser.text = "name: \(user.username)"
+                self.customView.emailUser.text = "email: \(user.email)"
             }
         }
     }
-    
-    private func setupDelegate() {
-        customView.userInfoTableView.dataSource = self
-        customView.userInfoTableView.delegate = self
-    }
-    
+
     @objc
     private func didTapLogout() {
         AuthService.shared.signOut { [weak self] error in
@@ -56,25 +52,3 @@ final class UserInfoViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
-
-extension UserInfoViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        categories.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = categories[indexPath.row]
-        cell.backgroundColor = .clear
-        cell.textLabel?.textColor = .white
-        cell.accessoryType = .disclosureIndicator
-        cell.selectionStyle = .none
-        return cell
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension UserInfoViewController: UITableViewDelegate {
-}

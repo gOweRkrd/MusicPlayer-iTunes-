@@ -31,7 +31,7 @@ final class TabBarController: UITabBarController {
             ),
 
             generateVC(
-                viewController: UserInfoViewController(),
+                viewController: UserInfoController(),
                 image: UIImage(systemName: "person")
             )
         ]

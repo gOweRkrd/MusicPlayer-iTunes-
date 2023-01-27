@@ -13,6 +13,7 @@
 		50306520296BF1D000E46455 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030651F296BF1D000E46455 /* FavouritesViewController.swift */; };
 		50306523296BF20200E46455 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50306522296BF20200E46455 /* FavouritesView.swift */; };
 		50306527296C020300E46455 /* FavouritiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50306526296C020300E46455 /* FavouritiesCell.swift */; };
+		50AF66192983D0260026F183 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF66182983D0260026F183 /* TitleLabel.swift */; };
 		50C61CEF297E814D005EE0BE /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C61CEE297E814D005EE0BE /* MainScreenView.swift */; };
 		50C61CFC297E966D005EE0BE /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C61CFB297E966D005EE0BE /* OnboardingView.swift */; };
 		50C61CFE297E9677005EE0BE /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C61CFD297E9677005EE0BE /* OnboardingViewController.swift */; };
@@ -50,15 +51,15 @@
 		D93339062978326500BC720A /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93339052978326500BC720A /* RegisterUserRequest.swift */; };
 		D93339082978397400BC720A /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93339072978397400BC720A /* LoginUserRequest.swift */; };
 		D933390B2978961300BC720A /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D933390A2978961300BC720A /* UserInfoView.swift */; };
-		D933390D2978981C00BC720A /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D933390C2978981C00BC720A /* UserInfoViewController.swift */; };
+		D933390D2978981C00BC720A /* UserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D933390C2978981C00BC720A /* UserInfoController.swift */; };
 		D933390F29789C8C00BC720A /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D933390E29789C8C00BC720A /* UserInfoModel.swift */; };
 		D933391129799B5A00BC720A /* DetailUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D933391029799B5A00BC720A /* DetailUserViewController.swift */; };
 		D93339142979AB5500BC720A /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93339132979AB5500BC720A /* AlertManager.swift */; };
 		D93339172979B30B00BC720A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93339162979B30B00BC720A /* Validator.swift */; };
 		D9ACAB77296D64200000805F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACAB76296D64200000805F /* BaseView.swift */; };
 		D9ACAB7A296D67050000805F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACAB79296D67050000805F /* LoginView.swift */; };
-		D9ACAB7C296D671A0000805F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACAB7B296D671A0000805F /* LoginViewController.swift */; };
-		D9ACAB80296D68090000805F /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACAB7F296D68090000805F /* TitleLabel.swift */; };
+		D9ACAB7C296D671A0000805F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACAB7B296D671A0000805F /* LoginController.swift */; };
+		D9ACAB80296D68090000805F /* LabelSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACAB7F296D68090000805F /* LabelSetup.swift */; };
 		D9ACAB85296D71BF0000805F /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACAB84296D71BF0000805F /* DescriptionLabel.swift */; };
 		D9ACAB87296D733B0000805F /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACAB86296D733B0000805F /* DefaultTextField.swift */; };
 		D9ACAB89296D91B10000805F /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACAB88296D91B10000805F /* DefaultButton.swift */; };
@@ -81,6 +82,7 @@
 		5030651F296BF1D000E46455 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		50306522296BF20200E46455 /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		50306526296C020300E46455 /* FavouritiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritiesCell.swift; sourceTree = "<group>"; };
+		50AF66182983D0260026F183 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		50C61CEE297E814D005EE0BE /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		50C61CFB297E966D005EE0BE /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		50C61CFD297E9677005EE0BE /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -120,15 +122,15 @@
 		D93339052978326500BC720A /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
 		D93339072978397400BC720A /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
 		D933390A2978961300BC720A /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
-		D933390C2978981C00BC720A /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		D933390C2978981C00BC720A /* UserInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoController.swift; sourceTree = "<group>"; };
 		D933390E29789C8C00BC720A /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		D933391029799B5A00BC720A /* DetailUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserViewController.swift; sourceTree = "<group>"; };
 		D93339132979AB5500BC720A /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		D93339162979B30B00BC720A /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		D9ACAB76296D64200000805F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		D9ACAB79296D67050000805F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		D9ACAB7B296D671A0000805F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		D9ACAB7F296D68090000805F /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		D9ACAB7B296D671A0000805F /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		D9ACAB7F296D68090000805F /* LabelSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSetup.swift; sourceTree = "<group>"; };
 		D9ACAB84296D71BF0000805F /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
 		D9ACAB86296D733B0000805F /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
 		D9ACAB88296D91B10000805F /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
@@ -315,8 +317,8 @@
 			isa = PBXGroup;
 			children = (
 				50C61D08297FA810005EE0BE /* Model */,
-				50C61CED297E80B3005EE0BE /* Controller */,
 				50C61CEC297E80A8005EE0BE /* View */,
+				50C61CED297E80B3005EE0BE /* Controller */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -520,7 +522,7 @@
 		D933391A2979B74500BC720A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D9ACAB7B296D671A0000805F /* LoginViewController.swift */,
+				D9ACAB7B296D671A0000805F /* LoginController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -552,7 +554,7 @@
 		D933391E2979B76400BC720A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D933390C2978981C00BC720A /* UserInfoViewController.swift */,
+				D933390C2978981C00BC720A /* UserInfoController.swift */,
 				D933391029799B5A00BC720A /* DetailUserViewController.swift */,
 			);
 			path = Controllers;
@@ -597,7 +599,8 @@
 		D9ACAB7E296D67E40000805F /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
-				D9ACAB7F296D68090000805F /* TitleLabel.swift */,
+				50AF66182983D0260026F183 /* TitleLabel.swift */,
+				D9ACAB7F296D68090000805F /* LabelSetup.swift */,
 				D9ACAB84296D71BF0000805F /* DescriptionLabel.swift */,
 				D9ACAB86296D733B0000805F /* DefaultTextField.swift */,
 				D9ACAB88296D91B10000805F /* DefaultButton.swift */,
@@ -712,7 +715,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9ACAB7C296D671A0000805F /* LoginViewController.swift in Sources */,
+				D9ACAB7C296D671A0000805F /* LoginController.swift in Sources */,
 				D873171F2978811500AC8ECD /* Country.swift in Sources */,
 				D873171529785B1C00AC8ECD /* ArtistModel.swift in Sources */,
 				50306520296BF1D000E46455 /* FavouritesViewController.swift in Sources */,
@@ -725,8 +728,9 @@
 				50306517296ACFB300E46455 /* SoundLayerView.swift in Sources */,
 				D93339142979AB5500BC720A /* AlertManager.swift in Sources */,
 				D8BB6CAA2979C479003635BC /* TrackListCell.swift in Sources */,
-				D9ACAB80296D68090000805F /* TitleLabel.swift in Sources */,
+				D9ACAB80296D68090000805F /* LabelSetup.swift in Sources */,
 				D864CBC32977D2550059E68D /* PopularAlbumsCell.swift in Sources */,
+				50AF66192983D0260026F183 /* TitleLabel.swift in Sources */,
 				D83B1314297B13B50003101F /* StorageManager.swift in Sources */,
 				D8BB6CA92979C479003635BC /* ArtistScreenViewController.swift in Sources */,
 				50048382296E91B400123A53 /* TabBarController.swift in Sources */,
@@ -739,7 +743,7 @@
 				50306527296C020300E46455 /* FavouritiesCell.swift in Sources */,
 				D9B29E62296F34E5003E8825 /* Int+Scaling.swift in Sources */,
 				D9B29EF9296FF0B1003E8825 /* RegistrationViewController.swift in Sources */,
-				D933390D2978981C00BC720A /* UserInfoViewController.swift in Sources */,
+				D933390D2978981C00BC720A /* UserInfoController.swift in Sources */,
 				D8290147297B18120091802A /* TrackData+CoreDataClass.swift in Sources */,
 				D8281E8D2977086C006EF86F /* TreckModel.swift in Sources */,
 				D8443230297D385600EC2C04 /* TopCountryCellConfig.swift in Sources */,

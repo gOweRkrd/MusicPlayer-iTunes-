@@ -96,6 +96,15 @@ extension ArtistScreenViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let soundVC = SoundLayerController()
+
+        soundVC.data = trackList[indexPath.row]
+        navigationController?.pushViewController(soundVC, animated: true)
+    }
 }
 
 // MARK: - TrackListCellDelegate

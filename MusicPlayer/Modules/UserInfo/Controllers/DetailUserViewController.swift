@@ -4,7 +4,7 @@ final class DetailUserViewController: UIViewController {
     
     // MARK: - UI Elements
 
-    let titleLabel = TitleLabel(title: "You are don't register!")
+    let titleLabel = LabelSetup(title: "You are don't register!")
     
     // MARK: - Lifecycle
     
