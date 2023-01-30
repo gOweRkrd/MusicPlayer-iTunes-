@@ -9,6 +9,7 @@ final class MainScreenViewController: UIViewController {
     private var artists = ArtistModel.createArtists()
     private var countryTracks = [TrackModel]()
     private let musicManager = MusicManager.shared
+    private var indexTrack = 0
     
     // MARK: - Lifecycle
     
@@ -123,6 +124,7 @@ extension MainScreenViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let soundVC = SoundLayerController()
+        didTapPlayButton(with: indexTrack)
         
         soundVC.data = countryTracks[indexPath.row]
         navigationController?.pushViewController(soundVC, animated: true)
@@ -134,7 +136,7 @@ extension MainScreenViewController: TopCountryCellDelegate {
         guard let index else {
             return
         }
-        
+        indexTrack = index
         musicManager.createTrackList(countryTracks)
         musicManager.playTrack(by: index)
     }

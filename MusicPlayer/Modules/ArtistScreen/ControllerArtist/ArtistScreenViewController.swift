@@ -8,7 +8,9 @@ final class ArtistScreenViewController: UIViewController {
     
     private let musicManager = MusicManager.shared
     private let artistViewScreen = ArtistViewScreen()
+    private var indexTrack = 0
     private var trackList = [TrackModel]()
+    
     
     // MARK: - Lifecycle
     
@@ -103,19 +105,10 @@ extension ArtistScreenViewController: UITableViewDelegate {
         let soundVC = SoundLayerController()
 
         soundVC.data = trackList[indexPath.row]
+        didTapPlayButton(with: indexTrack)
         navigationController?.pushViewController(soundVC, animated: true)
-        // функцию плей
-//        func didTapPlayButton(with index: Int?) {
-//            guard let index else {
-//                return
-//            }
-//            musicManager.createTrackList(trackList)
-//            musicManager.playTrack(by: index)
-//        }
     }
 }
-
-
 // MARK: - TrackListCellDelegate
 
 extension ArtistScreenViewController: TrackListCellDelegate {
@@ -124,18 +117,9 @@ extension ArtistScreenViewController: TrackListCellDelegate {
         guard let index else {
             return
         }
+        indexTrack = index
         musicManager.createTrackList(trackList)
         musicManager.playTrack(by: index)
     }
 }
-//
-//@objc
-//private func playBut () {
-//    if musicManager.isPlayed {
-//        soundView.playButton.setImage(UIImage(named: "play"), for: .normal)
-//        musicManager.pauseTrack()
-//    } else {
-//        soundView.playButton.setImage(UIImage(named: "pause"), for: .normal)
-//        musicManager.playTrack()
-//    }
-//}
+
