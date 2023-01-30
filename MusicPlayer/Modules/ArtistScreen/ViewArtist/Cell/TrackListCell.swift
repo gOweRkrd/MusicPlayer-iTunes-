@@ -10,6 +10,7 @@ final class TrackListCell: UITableViewCell {
 
     weak var delegate: TrackListCellDelegate?
     var index: Int?
+    private var isFavorite = false
 
     // MARK: - UI Elements
     
@@ -52,8 +53,19 @@ final class TrackListCell: UITableViewCell {
     }
 
     // MARK: - Private Methods
+    
+    private func changeButton() {
+        if isFavorite {
+            playButton.setImage(UIImage(named: "pause"), for: .normal)
+        } else {
+            playButton.setImage(UIImage(named: "play"), for: .normal)
+        }
+    }
+    
     @objc
     private func playButtonTap(_ sender: UIButton) {
+        isFavorite.toggle()
+        changeButton()
         delegate?.didTapPlayButton(with: index)
     }
 

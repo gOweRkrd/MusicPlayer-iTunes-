@@ -104,8 +104,17 @@ extension ArtistScreenViewController: UITableViewDelegate {
 
         soundVC.data = trackList[indexPath.row]
         navigationController?.pushViewController(soundVC, animated: true)
+        // функцию плей
+//        func didTapPlayButton(with index: Int?) {
+//            guard let index else {
+//                return
+//            }
+//            musicManager.createTrackList(trackList)
+//            musicManager.playTrack(by: index)
+//        }
     }
 }
+
 
 // MARK: - TrackListCellDelegate
 
@@ -119,3 +128,14 @@ extension ArtistScreenViewController: TrackListCellDelegate {
         musicManager.playTrack(by: index)
     }
 }
+//
+//@objc
+//private func playBut () {
+//    if musicManager.isPlayed {
+//        soundView.playButton.setImage(UIImage(named: "play"), for: .normal)
+//        musicManager.pauseTrack()
+//    } else {
+//        soundView.playButton.setImage(UIImage(named: "pause"), for: .normal)
+//        musicManager.playTrack()
+//    }
+//}

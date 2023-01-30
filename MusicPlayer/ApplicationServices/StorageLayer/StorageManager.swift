@@ -51,6 +51,10 @@ final class StorageManager {
     func hasModel(_ trackModel: TrackModel) -> Bool {
         trackData.first(where: {$0.trackURL == trackModel.previewUrl}) != nil
     }
+    
+    func fetchIds() -> Set<Int> {
+        Set(fetchItems().compactMap { Int($0.artistId!) })
+    }
 
     private func createItem(from trackModel: TrackModel) -> TrackData {
         let track = TrackData(context: viewContext)

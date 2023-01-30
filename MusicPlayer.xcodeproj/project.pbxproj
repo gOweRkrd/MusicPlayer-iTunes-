@@ -14,6 +14,8 @@
 		50306523296BF20200E46455 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50306522296BF20200E46455 /* FavouritesView.swift */; };
 		50306527296C020300E46455 /* FavouritiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50306526296C020300E46455 /* FavouritiesCell.swift */; };
 		50AF66192983D0260026F183 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF66182983D0260026F183 /* TitleLabel.swift */; };
+		50AF661C2983D3EB0026F183 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF661B2983D3EB0026F183 /* SearchViewController.swift */; };
+		50AF661E2983D8160026F183 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF661D2983D8160026F183 /* SearchModel.swift */; };
 		50C61CEF297E814D005EE0BE /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C61CEE297E814D005EE0BE /* MainScreenView.swift */; };
 		50C61CFC297E966D005EE0BE /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C61CFB297E966D005EE0BE /* OnboardingView.swift */; };
 		50C61CFE297E9677005EE0BE /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C61CFD297E9677005EE0BE /* OnboardingViewController.swift */; };
@@ -83,6 +85,8 @@
 		50306522296BF20200E46455 /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		50306526296C020300E46455 /* FavouritiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritiesCell.swift; sourceTree = "<group>"; };
 		50AF66182983D0260026F183 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		50AF661B2983D3EB0026F183 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		50AF661D2983D8160026F183 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		50C61CEE297E814D005EE0BE /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		50C61CFB297E966D005EE0BE /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		50C61CFD297E9677005EE0BE /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +229,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		50AF661A2983D3C00026F183 /* SearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				50AF661B2983D3EB0026F183 /* SearchViewController.swift */,
+			);
+			path = SearchScreen;
+			sourceTree = "<group>";
+		};
 		50C61CEC297E80A8005EE0BE /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +321,7 @@
 				D8281E882977086C006EF86F /* TreckModel.swift */,
 				D873171429785B1C00AC8ECD /* ArtistModel.swift */,
 				D873171E2978811500AC8ECD /* Country.swift */,
+				50AF661D2983D8160026F183 /* SearchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -397,6 +410,7 @@
 				D9B29EF5296FF01D003E8825 /* Registration */,
 				D9333909297895D500BC720A /* UserInfo */,
 				5030651C296B28A900E46455 /* SoundScreen */,
+				50AF661A2983D3C00026F183 /* SearchScreen */,
 				50048387296E9CC400123A53 /* TabBar */,
 			);
 			path = Modules;
@@ -718,6 +732,7 @@
 				D9ACAB7C296D671A0000805F /* LoginController.swift in Sources */,
 				D873171F2978811500AC8ECD /* Country.swift in Sources */,
 				D873171529785B1C00AC8ECD /* ArtistModel.swift in Sources */,
+				50AF661E2983D8160026F183 /* SearchModel.swift in Sources */,
 				50306520296BF1D000E46455 /* FavouritesViewController.swift in Sources */,
 				D8281E9C29771CFA006EF86F /* NetworkManager.swift in Sources */,
 				D864CBC52977EB3D0059E68D /* SelectorCountriesView.swift in Sources */,
@@ -743,6 +758,7 @@
 				50306527296C020300E46455 /* FavouritiesCell.swift in Sources */,
 				D9B29E62296F34E5003E8825 /* Int+Scaling.swift in Sources */,
 				D9B29EF9296FF0B1003E8825 /* RegistrationViewController.swift in Sources */,
+				50AF661C2983D3EB0026F183 /* SearchViewController.swift in Sources */,
 				D933390D2978981C00BC720A /* UserInfoController.swift in Sources */,
 				D8290147297B18120091802A /* TrackData+CoreDataClass.swift in Sources */,
 				D8281E8D2977086C006EF86F /* TreckModel.swift in Sources */,

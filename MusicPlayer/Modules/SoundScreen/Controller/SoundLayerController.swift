@@ -21,6 +21,7 @@ final class SoundLayerController: UIViewController {
                 return
             }
             soundView.activityIndicator.startAnimating()
+        
             NetworkManager.shared.downloadImage(from: imageURL) { image in
                 DispatchQueue.main.async { [self] in
                     soundView.imageViewMain.image = image

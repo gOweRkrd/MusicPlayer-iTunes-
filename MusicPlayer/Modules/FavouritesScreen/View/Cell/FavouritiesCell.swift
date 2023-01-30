@@ -8,6 +8,7 @@ final class FavouritiesCell: UITableViewCell {
 
     weak var delegate: FavouritiesCellDelegate?
     var index: Int?
+    private var isFavorite = false
 
     var data: TrackModel? {
         didSet {
@@ -59,8 +60,20 @@ final class FavouritiesCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private Methods
+    
+    private func changeButton() {
+        if isFavorite {
+            playButton.setImage(UIImage(named: "pause"), for: .normal)
+        } else {
+            playButton.setImage(UIImage(named: "play"), for: .normal)
+        }
+    }
 
     @objc func playBut() {
+        isFavorite.toggle()
+        changeButton()
         delegate?.didTapPlayButton(with: index)
     }
 }

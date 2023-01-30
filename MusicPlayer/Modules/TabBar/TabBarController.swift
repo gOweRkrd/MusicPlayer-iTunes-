@@ -24,6 +24,11 @@ final class TabBarController: UITabBarController {
                 viewController: SoundLayerController(),
                 image: UIImage(systemName: "play.circle")
             ),
+            
+//            generateVC(
+//                viewController: SearchViewController(),
+//                image: UIImage(systemName: "magnifyingglass.circle")
+//            ),
 
             generateVC(
                 viewController: FavouritesViewController(),

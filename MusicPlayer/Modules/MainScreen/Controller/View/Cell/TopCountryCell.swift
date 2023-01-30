@@ -10,6 +10,7 @@ final class TopCountryCell: UITableViewCell {
 
     weak var delegate: TopCountryCellDelegate?
     var index: Int?
+    private var isFavorite = false
     
     // MARK: - UI Elements
     
@@ -106,8 +107,18 @@ final class TopCountryCell: UITableViewCell {
 
     // MARK: - Private Methods
     
+    private func changeButton() {
+        if isFavorite {
+            playTrack.setImage(UIImage(named: "pause"), for: .normal)
+        } else {
+            playTrack.setImage(UIImage(named: "play"), for: .normal)
+        }
+    }
+    
     @objc
     private func playButMain () {
+        isFavorite.toggle()
+        changeButton()
         delegate?.didTapPlayButton(with: index)
     }
 
