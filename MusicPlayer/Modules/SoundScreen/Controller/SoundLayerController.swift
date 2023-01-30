@@ -41,7 +41,7 @@ final class SoundLayerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Playing Now"
+        setupNavigationBar()
         setupTarget()
     }
 
@@ -52,18 +52,14 @@ final class SoundLayerController: UIViewController {
     }
     
     // MARK: - Private Methods
-
-    private func setupTitle(backgroundColor: UIColor) {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = backgroundColor
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    
+    private func setupNavigationBar() {
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationItem.title = "Playing Now"
         navigationController?.navigationBar.tintColor = .white
     }
-
+    
     private func setupTarget() {
         soundView.playButton.addTarget(self, action: #selector(playBut), for: .touchUpInside)
         soundView.musicSlider.addTarget(self, action: #selector(sliderBut), for: .touchUpInside)

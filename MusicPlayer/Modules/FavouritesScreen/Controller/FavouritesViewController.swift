@@ -36,7 +36,7 @@ final class FavouritesViewController: UIViewController {
     }
 
     // MARK: - Private Methods
-
+    
     private func setupDelegate() {
         favouritesView.tableView.dataSource = self
         favouritesView.tableView.delegate = self

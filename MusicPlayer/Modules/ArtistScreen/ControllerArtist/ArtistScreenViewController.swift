@@ -20,40 +20,15 @@ final class ArtistScreenViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        title = nameArtist
+        navigationController?.navigationBar.tintColor = .white
         getTracksArtist()
         artistViewScreen.tableView.dataSource = self
         artistViewScreen.tableView.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setupTitle(backgroundColor: UIColor(named: "mainColor") ?? .black)
-        tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        setupTitle(backgroundColor: .clear)
-        tabBarController?.tabBar.isHidden = false
-    }
-    
     // MARK: - Private Methods
-    
-    private func setupTitle(backgroundColor: UIColor) {
-        title = nameArtist
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = backgroundColor
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.tintColor = .white
-    }
     
     private func getTracksArtist() {
         guard let nameArtist else {
