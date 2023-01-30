@@ -103,10 +103,11 @@ extension ArtistScreenViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let soundVC = SoundLayerController()
-
         soundVC.data = trackList[indexPath.row]
-        didTapPlayButton(with: indexTrack)
         navigationController?.pushViewController(soundVC, animated: true)
+        // playback of the current track after switching to the music screen
+        let indexTrack = trackList.indices[indexPath.row]
+        didTapPlayButton(with: indexTrack)
     }
 }
 // MARK: - TrackListCellDelegate

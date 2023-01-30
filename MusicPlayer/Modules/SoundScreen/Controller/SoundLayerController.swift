@@ -40,7 +40,8 @@ final class SoundLayerController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        navigationItem.title = "Playing Now"
         setupTarget()
     }
 

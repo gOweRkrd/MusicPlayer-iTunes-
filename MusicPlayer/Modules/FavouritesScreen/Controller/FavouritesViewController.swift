@@ -19,7 +19,6 @@ final class FavouritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupDelegate()
     }
 
@@ -41,17 +40,14 @@ final class FavouritesViewController: UIViewController {
     private func setupDelegate() {
         favouritesView.tableView.dataSource = self
         favouritesView.tableView.delegate = self
-
     }
     
     private func showEmptyStateView() {
         view.bringSubviewToFront(favouritesView.emptyStateView)
-
     }
 
     private func removeEmptyStateView() {
         view.bringSubviewToFront(favouritesView.tableView)
-
     }
 }
 
@@ -99,9 +95,11 @@ extension FavouritesViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let soundVC = SoundLayerController()
-    
         soundVC.data = trackList[indexPath.row]
-        navigationController?.pushViewController(soundVC, animated: true)
+        present(soundVC, animated: true)
+        // playback of the current track after switching to the music screen
+        let indexTrack = trackList.indices[indexPath.row]
+        didTapPlayButton(with: indexTrack)
     }
 }
 

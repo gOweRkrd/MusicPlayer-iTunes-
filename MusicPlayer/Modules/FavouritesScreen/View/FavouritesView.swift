@@ -8,7 +8,7 @@ final class FavouritesView: UIView {
 
     lazy var favoritesButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "heart 1"), for: .normal)
+        button.setImage(UIImage(named: "heart1"), for: .normal)
         button.backgroundColor = .gray
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 23
@@ -60,7 +60,7 @@ extension FavouritesView {
     func addSybView() {
         addSubviews([emptyStateView, favoritesButton, imageViewFavorites, menuButton, tableView])
     }
-
+    
     func setupConstraints() {
         NSLayoutConstraint.activate([
             emptyStateView.topAnchor.constraint(equalTo: topAnchor),
@@ -75,6 +75,8 @@ extension FavouritesView {
 
             imageViewFavorites.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             imageViewFavorites.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            imageViewFavorites.heightAnchor.constraint(equalToConstant:.imageViewFavoriteSizeAnchor),
+            imageViewFavorites.widthAnchor.constraint(equalToConstant:.imageViewFavoriteSizeAnchor),
 
             menuButton.topAnchor.constraint(equalTo: favoritesButton.topAnchor),
             menuButton.heightAnchor.constraint(equalToConstant: .sizeAnchor),
@@ -96,5 +98,6 @@ private extension CGFloat {
 
     static let favoritesButtonTopAnchor: CGFloat = 40
     static let widthHeightAnchor: CGFloat = 45
-    static let sizeAnchor: CGFloat = 1
+    static let sizeAnchor: CGFloat = 45
+    static let imageViewFavoriteSizeAnchor: CGFloat = 140
 }

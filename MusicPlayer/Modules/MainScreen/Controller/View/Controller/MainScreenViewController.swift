@@ -124,10 +124,11 @@ extension MainScreenViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let soundVC = SoundLayerController()
-        didTapPlayButton(with: indexTrack)
-        
         soundVC.data = countryTracks[indexPath.row]
         navigationController?.pushViewController(soundVC, animated: true)
+        // playback of the current track after switching to the music screen
+        let indexTrack = countryTracks.indices[indexPath.row]
+        didTapPlayButton(with: indexTrack)
     }
 }
 

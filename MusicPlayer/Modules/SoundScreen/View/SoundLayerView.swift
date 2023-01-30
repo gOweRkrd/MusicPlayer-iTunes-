@@ -79,6 +79,7 @@ final class SoundLayerView: UIView {
     }()
 
     lazy var leftButton: UIButton = {
+        
         let button = UIButton()
         button.setImage(UIImage(named: "left 1"), for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
