@@ -13,8 +13,10 @@
 		50306520296BF1D000E46455 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5030651F296BF1D000E46455 /* FavouritesViewController.swift */; };
 		50306523296BF20200E46455 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50306522296BF20200E46455 /* FavouritesView.swift */; };
 		50306527296C020300E46455 /* FavouritiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50306526296C020300E46455 /* FavouritiesCell.swift */; };
+		5036BBF02989013000F01971 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036BBEF2989013000F01971 /* SearchView.swift */; };
+		5036BBF5298904BE00F01971 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036BBF4298904BE00F01971 /* SearchCell.swift */; };
 		50AF66192983D0260026F183 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF66182983D0260026F183 /* TitleLabel.swift */; };
-		50AF661C2983D3EB0026F183 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF661B2983D3EB0026F183 /* SearchViewController.swift */; };
+		50AF661C2983D3EB0026F183 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF661B2983D3EB0026F183 /* SearchController.swift */; };
 		50AF661E2983D8160026F183 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AF661D2983D8160026F183 /* SearchModel.swift */; };
 		50C61CEF297E814D005EE0BE /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C61CEE297E814D005EE0BE /* MainScreenView.swift */; };
 		50C61CFC297E966D005EE0BE /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C61CFB297E966D005EE0BE /* OnboardingView.swift */; };
@@ -84,8 +86,10 @@
 		5030651F296BF1D000E46455 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		50306522296BF20200E46455 /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		50306526296C020300E46455 /* FavouritiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritiesCell.swift; sourceTree = "<group>"; };
+		5036BBEF2989013000F01971 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		5036BBF4298904BE00F01971 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		50AF66182983D0260026F183 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
-		50AF661B2983D3EB0026F183 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		50AF661B2983D3EB0026F183 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		50AF661D2983D8160026F183 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		50C61CEE297E814D005EE0BE /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		50C61CFB297E966D005EE0BE /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -229,10 +233,36 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		5036BBF12989045600F01971 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				50AF661B2983D3EB0026F183 /* SearchController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5036BBF22989046400F01971 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5036BBF32989046C00F01971 /* Cell */,
+				5036BBEF2989013000F01971 /* SearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5036BBF32989046C00F01971 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5036BBF4298904BE00F01971 /* SearchCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		50AF661A2983D3C00026F183 /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				50AF661B2983D3EB0026F183 /* SearchViewController.swift */,
+				5036BBF22989046400F01971 /* View */,
+				5036BBF12989045600F01971 /* Controller */,
 			);
 			path = SearchScreen;
 			sourceTree = "<group>";
@@ -751,6 +781,7 @@
 				50048382296E91B400123A53 /* TabBarController.swift in Sources */,
 				D8811CB9297C38D5007A39CC /* UIFont+Ext.swift in Sources */,
 				D83B1312297ACDFC0003101F /* MusicManager.swift in Sources */,
+				5036BBF5298904BE00F01971 /* SearchCell.swift in Sources */,
 				D8337FD3296AB0A900F60521 /* AppDelegate.swift in Sources */,
 				D9B29EFB297037EB003E8825 /* UITapGestureRecognizer+Ext.swift in Sources */,
 				D933390329782EBD00BC720A /* AuthService.swift in Sources */,
@@ -758,7 +789,7 @@
 				50306527296C020300E46455 /* FavouritiesCell.swift in Sources */,
 				D9B29E62296F34E5003E8825 /* Int+Scaling.swift in Sources */,
 				D9B29EF9296FF0B1003E8825 /* RegistrationViewController.swift in Sources */,
-				50AF661C2983D3EB0026F183 /* SearchViewController.swift in Sources */,
+				50AF661C2983D3EB0026F183 /* SearchController.swift in Sources */,
 				D933390D2978981C00BC720A /* UserInfoController.swift in Sources */,
 				D8290147297B18120091802A /* TrackData+CoreDataClass.swift in Sources */,
 				D8281E8D2977086C006EF86F /* TreckModel.swift in Sources */,
@@ -769,6 +800,7 @@
 				D864CBC72977EBC60059E68D /* CountryButtonView.swift in Sources */,
 				D9ACAB77296D64200000805F /* BaseView.swift in Sources */,
 				D93339082978397400BC720A /* LoginUserRequest.swift in Sources */,
+				5036BBF02989013000F01971 /* SearchView.swift in Sources */,
 				D9ACAB7A296D67050000805F /* LoginView.swift in Sources */,
 				D873171D2978807D00AC8ECD /* MusicError.swift in Sources */,
 				50C61CFC297E966D005EE0BE /* OnboardingView.swift in Sources */,
