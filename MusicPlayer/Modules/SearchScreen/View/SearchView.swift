@@ -57,7 +57,7 @@ private extension SearchView {
             searchTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: .searchTextFieldSize),
             searchTextField.heightAnchor.constraint(equalToConstant:.searchTextFieldHightAnchor),
         
-            tableView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: .myTableViewTopAnchor),
+            tableView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant:.myTableViewTopAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)

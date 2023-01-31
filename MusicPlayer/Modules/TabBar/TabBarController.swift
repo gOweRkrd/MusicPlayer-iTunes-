@@ -25,10 +25,10 @@ final class TabBarController: UITabBarController {
                 image: UIImage(systemName: "play.circle")
             ),
             
-            generateVC(
-                viewController: SearchController(),
-                image: UIImage(systemName: "magnifyingglass.circle")
-            ),
+//            generateVC(
+//                viewController: SearchController(),
+//                image: UIImage(systemName: "magnifyingglass.circle")
+//            ),
 
             generateVC(
                 viewController: FavouritesViewController(),

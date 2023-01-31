@@ -11,6 +11,7 @@ final class TrackListCell: UITableViewCell {
     weak var delegate: TrackListCellDelegate?
     var index: Int?
     private var isFavorite = false
+    private let musicManager = MusicManager.shared
 
     // MARK: - UI Elements
     
@@ -58,7 +59,7 @@ final class TrackListCell: UITableViewCell {
         if isFavorite {
             playButton.setImage(UIImage(named: "pause"), for: .normal)
         } else {
-            playButton.setImage(UIImage(named: "play"), for: .normal)
+            playButton.setImage(UIImage(named: "play"), for: .normal) 
         }
     }
     

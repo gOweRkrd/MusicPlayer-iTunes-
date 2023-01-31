@@ -1,9 +1,9 @@
 import UIKit
 
-final class SearchController: UIViewController {
+final class SearchController: UIViewController, UISearchBarDelegate {
     
     // MARK: - Properties
-    
+
     private let searchView = SearchView()
     
     // MARK: - Lifecycle
@@ -16,6 +16,7 @@ final class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
+        searchView.searchTextField.addTarget(self, action: #selector(searchBut), for: .touchUpInside)
     }
     
     // MARK: - Private Method
@@ -23,6 +24,11 @@ final class SearchController: UIViewController {
     private func setupDelegate() {
         searchView.tableView.dataSource = self
         searchView.tableView.delegate = self
+    }
+    
+    @objc
+    private func searchBut () {
+
     }
 }
 
@@ -42,7 +48,7 @@ extension SearchController: UITableViewDataSource {
             fatalError("Creating cell from HotelsListViewController failed")
         }
         
-        cell.textLabel?.text = "Поиск в разработке"
+        cell.textLabel?.text = "Экран в разработке"
         
         return cell
     }

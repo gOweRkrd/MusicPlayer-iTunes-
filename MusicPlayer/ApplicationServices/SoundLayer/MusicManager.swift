@@ -10,11 +10,10 @@ final class MusicManager {
     private var trackList = [TrackModel]()
     private var previewUrl: String?
     private var index: Int?
-
     private(set) var isPlayed = false
     private var periodicTimeObserver: Any?
     private var closure: ((ObserveTrackModel?, Bool) -> Void)?
-
+    
     private init() {
         let audioSession = AVAudioSession.sharedInstance()
         do {
