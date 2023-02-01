@@ -23,7 +23,7 @@ final class MusicManager {
         }
     }
 
-    private var player: AVPlayer? = {
+     var player: AVPlayer? = {
         var avPlayer = AVPlayer()
         avPlayer.automaticallyWaitsToMinimizeStalling = false
         return avPlayer

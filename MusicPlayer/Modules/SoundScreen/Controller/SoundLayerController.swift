@@ -66,6 +66,7 @@ final class SoundLayerController: UIViewController {
         soundView.favouritesButton.addTarget(self, action: #selector(favouritesTapButton), for: .touchUpInside)
         soundView.leftButton.addTarget(self, action: #selector(leftBut), for: .touchUpInside)
         soundView.rightButton.addTarget(self, action: #selector(rightBut), for: .touchUpInside)
+        soundView.volumeSlider.addTarget(self, action: #selector(volumeSliderBut), for: .touchUpInside)
     }
 
     private func setupPlayer() {
@@ -150,4 +151,10 @@ final class SoundLayerController: UIViewController {
         musicManager.nextTrack()
         getMusicData()
     }
+    
+    @objc
+    private func volumeSliderBut () {
+        musicManager.player!.volume = soundView.volumeSlider.value
+    }
+
 }

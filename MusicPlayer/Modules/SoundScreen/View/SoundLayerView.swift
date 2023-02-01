@@ -104,6 +104,41 @@ final class SoundLayerView: UIView {
         stack.spacing = 38
         return stack
     }()
+    
+    lazy var volumeSlider: UISlider = {
+        
+        let slider = UISlider()
+        slider.minimumTrackTintColor = .cyan
+        slider.maximumTrackTintColor = .gray
+        slider.thumbTintColor = .cyan
+        slider.value = (90)
+        return slider
+    }()
+    
+     lazy var minVolumeButton: UIButton = {
+
+        let button = UIButton()
+        button.setImage(UIImage(named: "Icon Min"), for: .normal)
+        return button
+    }()
+    
+     lazy var maxVolumeButton: UIButton = {
+
+        let button = UIButton()
+        button.setImage(UIImage(named: "IconMax"), for: .normal)
+        return button
+    }()
+    
+    lazy var buttonStackVolume: UIStackView = {
+        
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.spacing = 38
+        return stack
+    }()
+    
+
 
     // MARK: - Lifecycle
 
@@ -134,10 +169,13 @@ extension SoundLayerView {
             musicSlider,
             minuteStartLabel,
             minuteFinishLabel,
-            buttonStack
+            buttonStack,
+            volumeSlider,
+            minVolumeButton,
+            maxVolumeButton
         ])
 
-        [leftButton, playButton, rightButton].forEach { buttonStack.addArrangedSubview($0) }
+        [leftButton, playButton, rightButton].forEach { buttonStack.addArrangedSubview($0); }
     }
 
     func setupConstraints() {
@@ -171,7 +209,20 @@ extension SoundLayerView {
             minuteFinishLabel.trailingAnchor.constraint(equalTo: musicSlider.trailingAnchor),
 
             buttonStack.topAnchor.constraint(equalTo: minuteFinishLabel.bottomAnchor, constant: .buttonStackTopAnchor),
-            buttonStack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
+            buttonStack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            
+            volumeSlider.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant:35),
+            volumeSlider.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant:60),
+            volumeSlider.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -60),
+            
+            minVolumeButton.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant:40),
+            minVolumeButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant:30),
+            
+            
+            maxVolumeButton.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant:40),
+            maxVolumeButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant:-30)
+        
+            
         ])
     }
 }
