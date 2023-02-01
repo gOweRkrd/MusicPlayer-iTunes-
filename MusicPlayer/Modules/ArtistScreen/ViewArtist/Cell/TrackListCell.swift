@@ -1,7 +1,7 @@
 import UIKit
 
 protocol TrackListCellDelegate: AnyObject {
-    func didTapPlayButton(with index: Int?)
+    func didTapPlayButton(with index: Int?, mode: Int?)
 }
 
 final class TrackListCell: UITableViewCell {
@@ -66,7 +66,7 @@ final class TrackListCell: UITableViewCell {
     private func playButtonTap(_ sender: UIButton) {
         isFavorite.toggle()
         changeButton()
-        delegate?.didTapPlayButton(with: index)
+        delegate?.didTapPlayButton(with: index, mode: 0)
     }
 
     // MARK: - Setup Constrains

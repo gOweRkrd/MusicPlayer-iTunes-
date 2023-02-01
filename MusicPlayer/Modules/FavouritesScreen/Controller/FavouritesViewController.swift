@@ -9,6 +9,7 @@ final class FavouritesViewController: UIViewController {
 
     private let musicManager = MusicManager.shared
     private let storageManager = StorageManager.shared
+    private var indexTrack = 0
 
     // MARK: - Lifecycle
 
@@ -101,7 +102,8 @@ extension FavouritesViewController: UITableViewDelegate {
         let soundVC = SoundLayerController()
     
         soundVC.data = trackList[indexPath.row]
-        navigationController?.pushViewController(soundVC, animated: true)
+        indexTrack = trackList.indices[indexPath.row]
+        didTapPlayButton(with: indexTrack, mode: 1)
     }
 }
 
@@ -109,11 +111,18 @@ extension FavouritesViewController: UITableViewDelegate {
 
 extension FavouritesViewController: FavouritiesCellDelegate {
     
-    func didTapPlayButton(with index: Int?) {
+    func didTapPlayButton(with index: Int?, mode: Int?) {
         guard let index else {
             return
         }
-        musicManager.createTrackList(trackList)
-        musicManager.playTrack(by: index)
+        if mode == 0 {
+            indexTrack = index
+            musicManager.createTrackList(trackList)
+            musicManager.playTrack(by: index, mode: 0)
+        } else if mode == 1 {
+            indexTrack = index
+            musicManager.createTrackList(trackList)
+            musicManager.playTrack(by: index, mode: 1)
+        }
     }
 }

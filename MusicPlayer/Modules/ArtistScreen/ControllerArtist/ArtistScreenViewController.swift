@@ -105,21 +105,28 @@ extension ArtistScreenViewController: UITableViewDelegate {
         let soundVC = SoundLayerController()
 
         soundVC.data = trackList[indexPath.row]
-        didTapPlayButton(with: indexTrack)
+        let indexUU = trackList.indices[indexPath.row]
+    
+        didTapPlayButton(with: indexUU, mode: 1)
         navigationController?.pushViewController(soundVC, animated: true)
     }
 }
 // MARK: - TrackListCellDelegate
 
 extension ArtistScreenViewController: TrackListCellDelegate {
-    
-    func didTapPlayButton(with index: Int?) {
+    func didTapPlayButton(with index: Int?, mode: Int?) {
         guard let index else {
             return
         }
-        indexTrack = index
-        musicManager.createTrackList(trackList)
-        musicManager.playTrack(by: index)
+        if mode == 0 {
+            indexTrack = index
+            musicManager.createTrackList(trackList)
+            musicManager.playTrack(by: index, mode: 0)
+        } else if mode == 1 {
+            indexTrack = index
+            musicManager.createTrackList(trackList)
+            musicManager.playTrack(by: index, mode: 1)
+        }
     }
 }
 

@@ -1,7 +1,7 @@
 import UIKit
 
 protocol FavouritiesCellDelegate: AnyObject {
-    func didTapPlayButton(with index: Int?)
+    func didTapPlayButton(with index: Int?, mode: Int?)
 }
 
 final class FavouritiesCell: UITableViewCell {
@@ -74,7 +74,7 @@ final class FavouritiesCell: UITableViewCell {
     @objc func playBut() {
         isFavorite.toggle()
         changeButton()
-        delegate?.didTapPlayButton(with: index)
+        delegate?.didTapPlayButton(with: index, mode: 0)
     }
 }
 
