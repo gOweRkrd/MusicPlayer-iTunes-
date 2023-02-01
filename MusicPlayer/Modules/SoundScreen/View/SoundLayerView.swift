@@ -122,7 +122,7 @@ final class SoundLayerView: UIView {
         return button
     }()
     
-    private lazy var maxVolumeButton: UIButton = {
+     lazy var maxVolumeButton: UIButton = {
 
         let button = UIButton()
         button.setImage(UIImage(named: "IconMax"), for: .normal)
@@ -211,15 +211,15 @@ extension SoundLayerView {
             buttonStack.topAnchor.constraint(equalTo: minuteFinishLabel.bottomAnchor, constant: .buttonStackTopAnchor),
             buttonStack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             
-            volumeSlider.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant:45),
+            volumeSlider.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant:35),
             volumeSlider.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant:60),
             volumeSlider.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -60),
             
-            minVolumeButton.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant:50),
+            minVolumeButton.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant:40),
             minVolumeButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant:30),
             
             
-            maxVolumeButton.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant:50),
+            maxVolumeButton.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant:40),
             maxVolumeButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant:-30)
         
             
