@@ -2,20 +2,23 @@ import UIKit
 
 protocol TopCountryCellDelegate: AnyObject {
     func didTapPlayButton(with index: Int?, mode: Int?)
+    
 }
 
 final class TopCountryCell: UITableViewCell {
     
     // MARK: - Properties
-
+    
     weak var delegate: TopCountryCellDelegate?
     var index: Int?
     private var isFavorite = false
     
+    private let musicPlayer = MusicManager.shared
+    
     // MARK: - UI Elements
     
     private let activityIndicator = UIActivityIndicatorView(style: .large)
-
+    
     private let imageTrack: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -23,17 +26,17 @@ final class TopCountryCell: UITableViewCell {
         image.clipsToBounds = true
         return image
     }()
-
+    
     private let nameArtistLabel: UILabel = {
         let label = UILabel()
         label.text = "Artist"
         label.textColor = .cyan
         label.textAlignment = .left
-
+        
         label.font = .interBold(size: 14)
         return label
     }()
-
+    
     private let nameTrackLabel: UILabel = {
         let label = UILabel()
         label.text = "Track"
@@ -43,7 +46,7 @@ final class TopCountryCell: UITableViewCell {
         label.font = .interRegular(size: 14)
         return label
     }()
-
+    
     private let timeTrackLabel: UILabel = {
         let label = UILabel()
         label.text = "3.56"
@@ -52,7 +55,7 @@ final class TopCountryCell: UITableViewCell {
         label.font = .interRegular(size: 14)
         return label
     }()
-
+    
     private lazy var playTrack: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "play"), for: .normal)
@@ -60,43 +63,43 @@ final class TopCountryCell: UITableViewCell {
         button.layer.masksToBounds = true
         return button
     }()
-
+    
     // MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        
         selectionStyle = .none
         configure()
-
+        
         activityIndicator.color = .cyan
-
+        
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         imageTrack.image = nil
     }
-
+    
     
     // MARK: - PublicMethods
     
     func setup(config: TopCountryCellConfig) {
         nameArtistLabel.text = config.nameArtist
         nameTrackLabel.text = config.nameTrack
-
+        
         if let minutesTrack = config.minutesTrack {
             timeTrackLabel.text = String(format: "%.2f", Double(minutesTrack) / 60000)
         }
-
+        
         guard let imageURL = config.imageURL else {
             return
         }
-
+        
         NetworkManager.shared.downloadImage(from: imageURL) { image in
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
@@ -104,24 +107,42 @@ final class TopCountryCell: UITableViewCell {
             }
         }
     }
-
+    
     // MARK: - Private Methods
     
     private func changeButton() {
-        if isFavorite {
+        
+        if musicPlayer.isPlayed == false {
             playTrack.setImage(UIImage(named: "pause"), for: .normal)
+            
+            
         } else {
             playTrack.setImage(UIImage(named: "play"), for: .normal)
+            
         }
     }
     
     @objc
     private func playButMain () {
-        isFavorite.toggle()
-        changeButton()
-        delegate?.didTapPlayButton(with: index, mode: 0)
+        
+        
+        
+        if musicPlayer.isPlayed == false {
+            delegate?.didTapPlayButton(with: index, mode: 0)
+            playTrack.setImage(UIImage(named: "pause"), for: .normal)
+        } else {
+            musicPlayer.pauseTrack()
+            playTrack.setImage(UIImage(named: "play"), for: .normal)
+        }
+        
+        
+        
+        
+        //isFavorite.toggle()
+        //changeButton()
+        
     }
-
+    
     // MARK: - Setup Constrains
     
     private func configure() {
@@ -132,27 +153,27 @@ final class TopCountryCell: UITableViewCell {
                                  playTrack])
         imageTrack.addSubviews([activityIndicator])
         activityIndicator.startAnimating()
-
+        
         NSLayoutConstraint.activate([
             imageTrack.topAnchor.constraint(equalTo: topAnchor, constant: .leadingMargin),
             imageTrack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .leadingMargin),
             imageTrack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: .trailingMargin),
             imageTrack.widthAnchor.constraint(equalTo: imageTrack.heightAnchor),
-
+            
             nameArtistLabel.topAnchor.constraint(equalTo: imageTrack.topAnchor),
             nameArtistLabel.leadingAnchor.constraint(equalTo: imageTrack.trailingAnchor, constant: .leadingMargin),
             nameArtistLabel.trailingAnchor.constraint(equalTo: playTrack.leadingAnchor, constant: .trailingMargin),
-
+            
             nameTrackLabel.topAnchor.constraint(equalTo: nameArtistLabel.bottomAnchor, constant: .nameTrackTopMargin),
             nameTrackLabel.leadingAnchor.constraint(equalTo: imageTrack.trailingAnchor, constant: .leadingMargin),
             nameTrackLabel.trailingAnchor.constraint(equalTo: playTrack.leadingAnchor, constant: .trailingMargin),
             nameTrackLabel.bottomAnchor.constraint(equalTo: imageTrack.bottomAnchor),
-
+            
             playTrack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .trailingMargin),
             playTrack.centerYAnchor.constraint(equalTo: centerYAnchor),
             playTrack.heightAnchor.constraint(equalToConstant: .playTrackHeight),
             playTrack.widthAnchor.constraint(equalToConstant: .playTrackHeight),
-
+            
             activityIndicator.centerXAnchor.constraint(equalTo: imageTrack.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: imageTrack.centerYAnchor)
         ])

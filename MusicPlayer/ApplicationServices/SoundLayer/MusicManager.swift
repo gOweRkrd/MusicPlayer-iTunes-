@@ -46,7 +46,7 @@ final class MusicManager {
         } else if mode == 1 {
             if trackList[index].previewUrl == previewUrl {
                 if isPlayed == true {
-                    
+                    pauseTrack()
                 } else if isPlayed == false {
                     playTrack()
                 }
