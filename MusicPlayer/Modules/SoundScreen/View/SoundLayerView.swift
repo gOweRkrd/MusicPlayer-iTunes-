@@ -133,8 +133,8 @@ final class SoundLayerView: UIView {
         
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.alignment = .center
-        stack.spacing = 38
+//        stack.alignment = .center
+        stack.spacing = 12
         return stack
     }()
     

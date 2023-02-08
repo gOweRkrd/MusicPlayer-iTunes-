@@ -156,5 +156,4 @@ final class SoundLayerController: UIViewController {
     private func volumeSliderBut () {
         musicManager.player!.volume = soundView.volumeSlider.value
     }
-
 }

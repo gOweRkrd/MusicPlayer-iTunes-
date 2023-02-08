@@ -661,8 +661,8 @@
 				D9B29E60296F34E5003E8825 /* UIColorExtension+TabBar.swift */,
 				D9B29E61296F34E5003E8825 /* UIView+AddSubviews.swift */,
 				D9B29E66296F3531003E8825 /* UIStackView+Ext.swift */,
-				D9B29EFA297037EB003E8825 /* UITapGestureRecognizer+Ext.swift */,
 				D8811CB8297C38D5007A39CC /* UIFont+Ext.swift */,
+				D9B29EFA297037EB003E8825 /* UITapGestureRecognizer+Ext.swift */,
 			);
 			name = Extensions;
 			path = ../ApplicationServices/Extensions;
