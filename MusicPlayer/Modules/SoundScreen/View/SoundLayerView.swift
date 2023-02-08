@@ -111,7 +111,7 @@ final class SoundLayerView: UIView {
         slider.minimumTrackTintColor = .cyan
         slider.maximumTrackTintColor = .gray
         slider.thumbTintColor = .cyan
-        slider.value = (90)
+        slider.value = (100)
         return slider
     }()
     
@@ -133,8 +133,8 @@ final class SoundLayerView: UIView {
         
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.alignment = .center
-        stack.spacing = 38
+//        stack.alignment = .center
+        stack.spacing = 12
         return stack
     }()
     
@@ -215,14 +215,12 @@ extension SoundLayerView {
             volumeSlider.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant:60),
             volumeSlider.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -60),
             
-            minVolumeButton.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant:40),
-            minVolumeButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant:30),
+            minVolumeButton.topAnchor.constraint(equalTo: volumeSlider.topAnchor,constant: 5),
+            minVolumeButton.leadingAnchor.constraint(equalTo: volumeSlider.leadingAnchor, constant:-25),
             
-            
-            maxVolumeButton.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant:40),
-            maxVolumeButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant:-30)
+            maxVolumeButton.topAnchor.constraint(equalTo: volumeSlider.topAnchor, constant:5),
+            maxVolumeButton.trailingAnchor.constraint(equalTo: volumeSlider.trailingAnchor, constant:30)
         
-            
         ])
     }
 }
@@ -235,7 +233,7 @@ private extension CGFloat {
     static let topAnchor: CGFloat = 10
     static let trailingMargin: CGFloat = -10
     static let leadingTrailingAnchor: CGFloat = 15
-    static let authorLabelTopAnchor: CGFloat = 75
+    static let authorLabelTopAnchor: CGFloat = 23
     static let buttonStackTopAnchor: CGFloat = 15
     static let favoritesHeight: CGFloat = 30
 }
